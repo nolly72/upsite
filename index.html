@@ -8,104 +8,61 @@
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Шрифты и Библиотеки (Иконки и Графики) -->
+    <!-- Премиальный круглый шрифт Geologica -->
     <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Иконки и Графики (CDN библиотеки) -->
     <script src="https://unpkg.com"></script>
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
-    <!-- Фишка: Бегущая строка с курсами -->
+    <!-- Бегущая строка (Заполнится через JS: BTC, ETH, SOL, ADA, DOT и др.) -->
     <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker__item">BTC: $68,432 <span class="up">+2.4%</span></div>
-            <div class="ticker__item">ETH: $3,541 <span class="up">+1.8%</span></div>
-            <div class="ticker__item">SOL: $145.05 <span class="down">-0.5%</span></div>
-            <div class="ticker__item">NOLLY: $12.40 <span class="up">+15.2%</span></div>
-            <div class="ticker__item">BNB: $590.10 <span class="up">+0.7%</span></div>
+        <div class="ticker" id="webticker">
+            <!-- Контент генерируется в script.js -->
         </div>
     </div>
 
     <div class="app-container">
-        <!-- Боковая панель навигации -->
+        <!-- Боковая панель -->
         <aside class="sidebar">
             <div class="logo">NOLLY<span>.</span></div>
+            
             <nav class="nav-menu">
-                <a href="#" class="nav-link active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
-                <a href="#" class="nav-link"><i data-lucide="bar-chart-big"></i> <span>Analytics</span></a>
-                <a href="#" class="nav-link" id="theme-toggle"><i data-lucide="palette"></i> <span>Appearance</span></a>
-                <a href="#" class="nav-link"><i data-lucide="shield-check"></i> <span>Security</span></a>
+                <a href="#" class="nav-link active" onclick="navigation('dashboard', event)">
+                    <i data-lucide="layout-dashboard"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-link" onclick="navigation('analytics', event)">
+                    <i data-lucide="bar-chart-big"></i> <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-link" onclick="navigation('appearance', event)">
+                    <i data-lucide="palette"></i> <span>Appearance</span>
+                </a>
+                <a href="#" class="nav-link" onclick="navigation('security', event)">
+                    <i data-lucide="shield-check"></i> <span>Security</span>
+                </a>
             </nav>
-            <div class="system-status">
-                <div class="pulse"></div>
-                <span>ZENITH CORE V.2</span>
+
+            <div class="sidebar-footer">
+                <div class="system-badge">
+                    <div class="pulse"></div>
+                    <span>ZENITH CORE ACTIVE</span>
+                </div>
+                <button class="btn-wallet" onclick="action('connect')">
+                    <i data-lucide="wallet"></i> <span>Connect Wallet</span>
+                </button>
             </div>
         </aside>
 
-        <!-- Основной контент -->
-        <main class="main-content">
-            <header class="header reveal">
-                <div class="user-info">
-                    <h1>Zenith Control</h1>
-                    <p>Добро пожаловать в систему управления активами.</p>
-                </div>
-                <div class="header-actions">
-                    <button class="btn btn-glass" onclick="triggerAction('export')" title="Скачать отчет">
-                        <i data-lucide="download"></i>
-                    </button>
-                    <button class="btn btn-primary" onclick="triggerAction('deposit')">
-                        Инвестировать +
-                    </button>
-                </div>
-            </header>
-
-            <div class="dashboard-grid">
-                <!-- Карточка Баланса -->
-                <div class="card glass-card reveal">
-                    <div class="card-label">Total Balance</div>
-                    <div class="value" id="balance-val">$42,850.00</div>
-                    <div class="trend-row">
-                        <span class="trend up">+ $1,200.00</span>
-                        <span class="trend-label">за сегодня</span>
-                    </div>
-                </div>
-
-                <!-- AI Блок (Интерактивная фишка) -->
-                <div class="card glass-card ai-card reveal">
-                    <div class="card-label ai-label"><i data-lucide="cpu"></i> AI INSIGHT</div>
-                    <div class="ai-text" id="ai-output">Инициализация...</div>
-                    <div class="progress-container">
-                        <div class="progress-bar" id="ai-progress"></div>
-                    </div>
-                </div>
-
-                <!-- График производительности -->
-                <div class="card glass-card chart-card reveal">
-                    <div class="card-header">
-                        <h3>Performance Analytics</h3>
-                        <div class="chart-legend">
-                            <span class="dot"></span> Live Data
-                        </div>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="zenithChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- История транзакций (Динамическая) -->
-                <div class="card glass-card history-card reveal">
-                    <h3>Recent Activity</h3>
-                    <div class="history-list" id="history-list">
-                        <!-- Сюда JS будет добавлять записи -->
-                        <div class="empty-state">История обновляется...</div>
-                    </div>
-                </div>
-            </div>
+        <!-- Основная область (Контент меняется динамически без перезагрузки) -->
+        <main class="main-content" id="router-view">
+            <!-- Сюда script.js подставит активную страницу -->
         </main>
     </div>
 
-    <!-- Всплывающие уведомления -->
-    <div id="toast" class="toast">Операция успешна</div>
+    <!-- Всплывающие уведомления (Toast) -->
+    <div id="toast" class="toast">Система готова</div>
 
     <!-- Подключение логики -->
     <script src="script.js"></script>
