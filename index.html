@@ -3,138 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY | Zenith Control Premium</title>
+    <title>NOLLY | Zenith Control Pro</title>
     
-    <!-- Шрифты и Библиотеки -->
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Шрифты и Библиотеки (Иконки и Графики) -->
     <link href="https://googleapis.com" rel="stylesheet">
     <script src="https://unpkg.com"></script>
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
-<div class="app-container">
-    <!-- 1. Боковая панель (Sidebar) -->
-    <aside class="sidebar">
-        <div class="logo">
-            <div class="logo-icon">N</div>
-            <span>NOLLY</span>
+    <!-- Фишка: Бегущая строка с курсами -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker__item">BTC: $68,432 <span class="up">+2.4%</span></div>
+            <div class="ticker__item">ETH: $3,541 <span class="up">+1.8%</span></div>
+            <div class="ticker__item">SOL: $145.05 <span class="down">-0.5%</span></div>
+            <div class="ticker__item">NOLLY: $12.40 <span class="up">+15.2%</span></div>
+            <div class="ticker__item">BNB: $590.10 <span class="up">+0.7%</span></div>
         </div>
-        
-        <nav class="main-nav">
-            <a href="#" class="nav-link active" data-tip="Главная"><i data-lucide="layout-grid"></i> <span>Dashboard</span></a>
-            <a href="#" class="nav-link" data-tip="Рынки"><i data-lucide="line-chart"></i> <span>Market View</span></a>
-            <a href="#" class="nav-link" data-tip="Кошелек"><i data-lucide="wallet"></i> <span>Assets</span></a>
-            <a href="#" class="nav-link" data-tip="Безопасность"><i data-lucide="shield-check"></i> <span>Security</span></a>
-            <div class="nav-divider"></div>
-            <a href="#" class="nav-link" data-tip="Настройки"><i data-lucide="settings"></i> <span>Settings</span></a>
-        </nav>
+    </div>
 
-        <div class="system-monitor">
-            <div class="status-row">
-                <span class="status-dot"></span>
-                <span class="status-text">Zenith Engine Active</span>
+    <div class="app-container">
+        <!-- Боковая панель навигации -->
+        <aside class="sidebar">
+            <div class="logo">NOLLY<span>.</span></div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+                <a href="#" class="nav-link"><i data-lucide="bar-chart-big"></i> <span>Analytics</span></a>
+                <a href="#" class="nav-link" id="theme-toggle"><i data-lucide="palette"></i> <span>Appearance</span></a>
+                <a href="#" class="nav-link"><i data-lucide="shield-check"></i> <span>Security</span></a>
+            </nav>
+            <div class="system-status">
+                <div class="pulse"></div>
+                <span>ZENITH CORE V.2</span>
             </div>
-            <div class="cpu-load">
-                <div class="load-bar"><div class="load-fill" id="cpu-fill"></div></div>
-                <span>CPU Load: 24%</span>
-            </div>
-        </div>
-    </aside>
+        </aside>
 
-    <!-- 2. Основная рабочая область -->
-    <main class="content">
-        <!-- Верхняя панель (Header) -->
-        <header class="top-bar">
-            <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" placeholder="Поиск по активам...">
-            </div>
-            
-            <div class="top-actions">
-                <div class="theme-selector" id="themeBtn">
-                    <div class="color-dot blue" onclick="changeTheme('#38bdf8')"></div>
-                    <div class="color-dot green" onclick="changeTheme('#10b981')"></div>
-                    <div class="color-dot purple" onclick="changeTheme('#a855f7')"></div>
+        <!-- Основной контент -->
+        <main class="main-content">
+            <header class="header reveal">
+                <div class="user-info">
+                    <h1>Zenith Control</h1>
+                    <p>Добро пожаловать в систему управления активами.</p>
                 </div>
-                <div class="notif-bell" onclick="showNotification('У вас нет новых сообщений')">
-                    <i data-lucide="bell"></i>
-                    <span class="bell-dot"></span>
+                <div class="header-actions">
+                    <button class="btn btn-glass" onclick="triggerAction('export')" title="Скачать отчет">
+                        <i data-lucide="download"></i>
+                    </button>
+                    <button class="btn btn-primary" onclick="triggerAction('deposit')">
+                        Инвестировать +
+                    </button>
                 </div>
-                <div class="profile">
-                    <img src="https://dicebear.com" alt="Avatar">
-                    <span class="pro-badge">PRO</span>
-                </div>
-            </div>
-        </header>
+            </header>
 
-        <!-- Сетка виджетов -->
-        <section class="dashboard-grid">
-            <!-- Главная карточка Баланса -->
-            <div class="card glass-card balance-card reveal">
-                <div class="card-head">
-                    <p>Net Worth Balance</p>
-                    <i data-lucide="more-horizontal"></i>
+            <div class="dashboard-grid">
+                <!-- Карточка Баланса -->
+                <div class="card glass-card reveal">
+                    <div class="card-label">Total Balance</div>
+                    <div class="value" id="balance-val">$42,850.00</div>
+                    <div class="trend-row">
+                        <span class="trend up">+ $1,200.00</span>
+                        <span class="trend-label">за сегодня</span>
+                    </div>
                 </div>
-                <h2 id="mainBalance">$128,450.00</h2>
-                <div class="balance-stats">
-                    <span class="trend-up">+12.5% <i data-lucide="trending-up"></i></span>
-                    <span class="stat-label">vs last month</span>
-                </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="triggerAction('deposit')">Deposit</button>
-                    <button class="btn btn-secondary" onclick="triggerAction('withdraw')">Withdraw</button>
-                </div>
-            </div>
 
-            <!-- AI Инсайт (Фишка №1) -->
-            <div class="card glass-card ai-card reveal">
-                <div class="card-head">
-                    <p>AI Market Analysis</p>
-                    <span class="ai-badge">LIVE</span>
+                <!-- AI Блок (Интерактивная фишка) -->
+                <div class="card glass-card ai-card reveal">
+                    <div class="card-label ai-label"><i data-lucide="cpu"></i> AI INSIGHT</div>
+                    <div class="ai-text" id="ai-output">Инициализация...</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="ai-progress"></div>
+                    </div>
                 </div>
-                <div class="ai-content">
-                    <div class="ai-typing" id="aiText">Analyzing market volatility... Ready for trade.</div>
-                </div>
-                <div class="ai-footer">
-                    <span>Confidence: 98%</span>
-                    <div class="mini-graph"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-                </div>
-            </div>
 
-            <!-- Активность (Фишка №3) -->
-            <div class="card glass-card feed-card reveal">
-                <div class="card-head"><h3>Recent Activity</h3></div>
-                <div class="activity-list" id="activityFeed">
-                    <!-- Заполняется через JS -->
-                </div>
-            </div>
-
-            <!-- График (Большая карточка) -->
-            <div class="card glass-card chart-card reveal">
-                <div class="chart-header">
-                    <div class="chart-info">
+                <!-- График производительности -->
+                <div class="card glass-card chart-card reveal">
+                    <div class="card-header">
                         <h3>Performance Analytics</h3>
-                        <p>Real-time data visualization</p>
+                        <div class="chart-legend">
+                            <span class="dot"></span> Live Data
+                        </div>
                     </div>
-                    <div class="chart-periods">
-                        <button class="active">1D</button>
-                        <button>1W</button>
-                        <button>1M</button>
+                    <div class="chart-wrapper">
+                        <canvas id="zenithChart"></canvas>
                     </div>
                 </div>
-                <div class="main-chart-wrapper">
-                    <canvas id="zenithChart"></canvas>
+
+                <!-- История транзакций (Динамическая) -->
+                <div class="card glass-card history-card reveal">
+                    <h3>Recent Activity</h3>
+                    <div class="history-list" id="history-list">
+                        <!-- Сюда JS будет добавлять записи -->
+                        <div class="empty-state">История обновляется...</div>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
-</div>
+        </main>
+    </div>
 
-<!-- Всплывающее уведомление (Toast) -->
-<div id="toast" class="toast">
-    <div class="toast-icon"><i data-lucide="check-circle"></i></div>
-    <div class="toast-text" id="toastMsg">Action Successful</div>
-</div>
+    <!-- Всплывающие уведомления -->
+    <div id="toast" class="toast">Операция успешна</div>
 
+    <!-- Подключение логики -->
+    <script src="script.js"></script>
 </body>
 </html>
