@@ -2,188 +2,139 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NOLLY AURA | Ultra-Premium OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOLLY | Zenith Control Premium</title>
     
-    <!-- Подключаем премиальные шрифты -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Иконки и графики -->
+    <!-- Шрифты и Библиотеки -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <script src="https://unpkg.com"></script>
     <script src="https://jsdelivr.net"></script>
-    
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="aura-os-dark">
+<body>
 
-    <div class="bg-visualizer"></div>
-
-    <!-- Мобильная навигация (Tab Bar) -->
-    <nav class="mobile-tab-bar">
-        <button class="tab-btn active" onclick="switchPage('dashboard')"><i data-lucide="layout-grid"></i></button>
-        <button class="tab-btn" onclick="switchPage('climate')"><i data-lucide="thermometer"></i></button>
-        <button class="tab-btn" onclick="switchPage('security')"><i data-lucide="shield-check"></i></button>
-        <button class="tab-btn" onclick="switchPage('lighting')"><i data-lucide="zap"></i></button>
-        <button class="tab-btn" onclick="toggleAIChat()"><i data-lucide="sparkles"></i></button>
-    </nav>
-
-    <!-- Sidebar (Desktop) -->
-    <aside class="sidebar-premium glass">
-        <div class="sidebar-header">
-            <div class="aura-logo"></div>
-            <h1 class="aura-brand">NOLLY AURA</h1>
+<div class="app-container">
+    <!-- 1. Боковая панель (Sidebar) -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">N</div>
+            <span>NOLLY</span>
         </div>
+        
+        <nav class="main-nav">
+            <a href="#" class="nav-link active" data-tip="Главная"><i data-lucide="layout-grid"></i> <span>Dashboard</span></a>
+            <a href="#" class="nav-link" data-tip="Рынки"><i data-lucide="line-chart"></i> <span>Market View</span></a>
+            <a href="#" class="nav-link" data-tip="Кошелек"><i data-lucide="wallet"></i> <span>Assets</span></a>
+            <a href="#" class="nav-link" data-tip="Безопасность"><i data-lucide="shield-check"></i> <span>Security</span></a>
+            <div class="nav-divider"></div>
+            <a href="#" class="nav-link" data-tip="Настройки"><i data-lucide="settings"></i> <span>Settings</span></a>
+        </nav>
 
-        <div class="nav-container">
-            <!-- ОБЗОР -->
-            <div class="nav-section">
-                <span class="nav-label">Обзор</span>
-                <a href="#" class="nav-item active" onclick="switchPage('dashboard')"><i data-lucide="home"></i> <span>Главная</span></a>
-                <a href="#" class="nav-item" onclick="switchPage('analytics')"><i data-lucide="line-chart"></i> <span>Аналитика</span></a>
-                <a href="#" class="nav-item" onclick="notif('Отчет сформирован')"><i data-lucide="file-text"></i> <span>Отчеты ЭКО</span></a>
+        <div class="system-monitor">
+            <div class="status-row">
+                <span class="status-dot"></span>
+                <span class="status-text">Zenith Engine Active</span>
             </div>
-
-            <!-- УПРАВЛЕНИЕ -->
-            <div class="nav-section">
-                <span class="nav-label">Управление</span>
-                <a href="#" class="nav-item" onclick="switchPage('climate')"><i data-lucide="droplets"></i> <span>Климат</span></a>
-                <a href="#" class="nav-item" onclick="switchPage('security')"><i data-lucide="shield"></i> <span>Безопасность</span></a>
-                <a href="#" class="nav-item" onclick="switchPage('lighting')"><i data-lucide="sun"></i> <span>Освещение</span></a>
-                <a href="#" class="nav-item" onclick="notif('Мультирум активен')"><i data-lucide="music"></i> <span>Медиацентр</span></a>
-            </div>
-
-            <!-- СЕРВИСЫ -->
-            <div class="nav-section">
-                <span class="nav-label">Сервисы</span>
-                <a href="#" class="nav-item" onclick="handleService('taxi')"><i data-lucide="car"></i> <span>Яндекс Такси</span></a>
-                <a href="#" class="nav-item" onclick="handleService('food')"><i data-lucide="shopping-bag"></i> <span>Доставка еды</span></a>
-                <a href="#" class="nav-item" onclick="handleService('fun')"><i data-lucide="map-pin"></i> <span>Развлечения</span></a>
-                <a href="#" class="nav-item" onclick="notif('Бронь стола отправлена')"><i data-lucide="utensils"></i> <span>Рестораны</span></a>
-                <a href="#" class="nav-item" onclick="notif('Клининг вызван на 12:00')"><i data-lucide="sparkles"></i> <span>Клининг</span></a>
-            </div>
-        </div>
-
-        <div class="sidebar-user glass">
-            <div class="user-avatar">
-                <img src="https://ui-avatars.com" alt="User">
-                <div class="pulse-online"></div>
-            </div>
-            <div class="user-info">
-                <p class="u-name">Александр</p>
-                <p class="u-status">Premium Access</p>
+            <div class="cpu-load">
+                <div class="load-bar"><div class="load-fill" id="cpu-fill"></div></div>
+                <span>CPU Load: 24%</span>
             </div>
         </div>
     </aside>
 
-    <!-- Main stage -->
-    <main class="main-stage">
-        <header class="top-bar glass">
-            <div class="search-wrapper">
+    <!-- 2. Основная рабочая область -->
+    <main class="content">
+        <!-- Верхняя панель (Header) -->
+        <header class="top-bar">
+            <div class="search-box">
                 <i data-lucide="search"></i>
-                <input type="text" placeholder="Поиск по экосистеме NOLLY...">
+                <input type="text" placeholder="Поиск по активам...">
             </div>
-            <div class="status-center">
-                <div class="sys-indicator"><span class="dot"></span> Система: Онлайн</div>
-                <button class="notif-btn" onclick="notif('Новых уведомлений нет')">
+            
+            <div class="top-actions">
+                <div class="theme-selector" id="themeBtn">
+                    <div class="color-dot blue" onclick="changeTheme('#38bdf8')"></div>
+                    <div class="color-dot green" onclick="changeTheme('#10b981')"></div>
+                    <div class="color-dot purple" onclick="changeTheme('#a855f7')"></div>
+                </div>
+                <div class="notif-bell" onclick="showNotification('У вас нет новых сообщений')">
                     <i data-lucide="bell"></i>
-                    <span class="count-badge">3</span>
-                </button>
+                    <span class="bell-dot"></span>
+                </div>
+                <div class="profile">
+                    <img src="https://dicebear.com" alt="Avatar">
+                    <span class="pro-badge">PRO</span>
+                </div>
             </div>
         </header>
 
-        <div id="dynamic-content">
-            <!-- ГЛАВНАЯ (Dashboard) -->
-            <section id="dashboard" class="content-page active">
-                <div class="hero-aura">
-                    <h2>Добрый вечер, <span class="text-gradient">Александр</span></h2>
-                    <p>Воздух очищен на 99%, температура в спальне оптимизирована для сна.</p>
+        <!-- Сетка виджетов -->
+        <section class="dashboard-grid">
+            <!-- Главная карточка Баланса -->
+            <div class="card glass-card balance-card reveal">
+                <div class="card-head">
+                    <p>Net Worth Balance</p>
+                    <i data-lucide="more-horizontal"></i>
                 </div>
+                <h2 id="mainBalance">$128,450.00</h2>
+                <div class="balance-stats">
+                    <span class="trend-up">+12.5% <i data-lucide="trending-up"></i></span>
+                    <span class="stat-label">vs last month</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-primary" onclick="triggerAction('deposit')">Deposit</button>
+                    <button class="btn btn-secondary" onclick="triggerAction('withdraw')">Withdraw</button>
+                </div>
+            </div>
 
-                <div class="bento-grid">
-                    <div class="bento-item wide glass">
-                        <div class="item-head">
-                            <h3>Статистика потребления</h3>
-                            <select class="aura-select"><option>За неделю</option></select>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="luxuryChart"></canvas>
-                        </div>
-                    </div>
-                    
-                    <div class="bento-item tall glass climate-widget">
-                        <h3>Климат</h3>
-                        <div class="temp-ring-container">
-                            <div class="temp-ring">
-                                <span id="temp-val">22</span>°C
-                            </div>
-                        </div>
-                        <input type="range" id="temp-slider" min="16" max="30" value="22" class="aura-slider">
-                        <div class="quick-modes">
-                            <button class="mode-pill active">Auto</button>
-                            <button class="mode-pill">Eco</button>
-                            <button class="mode-pill">Turbo</button>
-                        </div>
-                    </div>
+            <!-- AI Инсайт (Фишка №1) -->
+            <div class="card glass-card ai-card reveal">
+                <div class="card-head">
+                    <p>AI Market Analysis</p>
+                    <span class="ai-badge">LIVE</span>
+                </div>
+                <div class="ai-content">
+                    <div class="ai-typing" id="aiText">Analyzing market volatility... Ready for trade.</div>
+                </div>
+                <div class="ai-footer">
+                    <span>Confidence: 98%</span>
+                    <div class="mini-graph"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+                </div>
+            </div>
 
-                    <div class="bento-item glass preview-box">
-                        <h3>Активные сценарии</h3>
-                        <div class="active-list" id="active-list">
-                            <!-- JS Inject -->
-                        </div>
+            <!-- Активность (Фишка №3) -->
+            <div class="card glass-card feed-card reveal">
+                <div class="card-head"><h3>Recent Activity</h3></div>
+                <div class="activity-list" id="activityFeed">
+                    <!-- Заполняется через JS -->
+                </div>
+            </div>
+
+            <!-- График (Большая карточка) -->
+            <div class="card glass-card chart-card reveal">
+                <div class="chart-header">
+                    <div class="chart-info">
+                        <h3>Performance Analytics</h3>
+                        <p>Real-time data visualization</p>
+                    </div>
+                    <div class="chart-periods">
+                        <button class="active">1D</button>
+                        <button>1W</button>
+                        <button>1M</button>
                     </div>
                 </div>
-            </section>
-
-            <!-- СЕКЦИЯ: КЛИМАТ -->
-            <section id="climate" class="content-page">
-                <h2 class="section-title">Климат-контроль</h2>
-                <div class="premium-btn-grid" id="climate-grid"></div>
-            </section>
-
-            <!-- СЕКЦИЯ: БЕЗОПАСНОСТЬ -->
-            <section id="security" class="content-page">
-                <h2 class="section-title">Безопасность</h2>
-                <div class="premium-btn-grid" id="security-grid"></div>
-            </section>
-
-            <!-- СЕКЦИЯ: ОСВЕЩЕНИЕ -->
-            <section id="lighting" class="content-page">
-                <h2 class="section-title">Освещение</h2>
-                <div class="premium-btn-grid" id="lighting-grid"></div>
-            </section>
-
-            <!-- СЕКЦИЯ: АНАЛИТИКА -->
-            <section id="analytics" class="content-page">
-                <h2 class="section-title">Глубокая аналитика</h2>
-                <div class="glass stats-report-card">
-                    <p>Анализ данных за последние 30 дней показывает экономию 15% благодаря ИИ NOLLY.</p>
+                <div class="main-chart-wrapper">
+                    <canvas id="zenithChart"></canvas>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
+</div>
 
-    <!-- AI Ассистент -->
-    <div id="ai-interface" class="ai-overlay glass">
-        <div class="ai-header">
-            <div class="ai-tag">AI AURA</div>
-            <button onclick="toggleAIChat()"><i data-lucide="chevron-down"></i></button>
-        </div>
-        <div class="ai-messages" id="ai-messages">
-            <div class="msg bot">Приветствую, Александр. Я готов к работе. Что настроим?</div>
-        </div>
-        <div class="ai-suggestions-grid" id="ai-hints"></div>
-    </div>
+<!-- Всплывающее уведомление (Toast) -->
+<div id="toast" class="toast">
+    <div class="toast-icon"><i data-lucide="check-circle"></i></div>
+    <div class="toast-text" id="toastMsg">Action Successful</div>
+</div>
 
-    <!-- Floating AI Trigger -->
-    <button class="ai-trigger" onclick="toggleAIChat()">
-        <div class="ai-glow"></div>
-        <i data-lucide="sparkles"></i>
-    </button>
-
-    <div id="toast-root"></div>
-
-    <script src="script.js"></script>
 </body>
 </html>
