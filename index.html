@@ -2,30 +2,32 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NOLLY | Zenith Control Pro</title>
     
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Премиальный круглый шрифт Geologica -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Премиальный круглый шрифт Geologica (Google Fonts) -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Иконки и Графики (CDN библиотеки) -->
+    <!-- Иконки (Lucide) и Графики (Chart.js) -->
     <script src="https://unpkg.com"></script>
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
-    <!-- Бегущая строка (Заполнится через JS: BTC, ETH, SOL, ADA, DOT и др.) -->
+    <!-- Блок бесконечной бегущей строки -->
     <div class="ticker-wrap">
         <div class="ticker" id="webticker">
-            <!-- Контент генерируется в script.js -->
+            <!-- Контент генерируется автоматически в script.js -->
         </div>
     </div>
 
     <div class="app-container">
-        <!-- Боковая панель -->
+        <!-- Боковая панель (Sidebar) -->
         <aside class="sidebar">
             <div class="logo">NOLLY<span>.</span></div>
             
@@ -47,7 +49,7 @@
             <div class="sidebar-footer">
                 <div class="system-badge">
                     <div class="pulse"></div>
-                    <span>ZENITH CORE ACTIVE</span>
+                    <span>ZENITH CORE V.3 ACTIVE</span>
                 </div>
                 <button class="btn-wallet" onclick="action('connect')">
                     <i data-lucide="wallet"></i> <span>Connect Wallet</span>
@@ -55,16 +57,16 @@
             </div>
         </aside>
 
-        <!-- Основная область (Контент меняется динамически без перезагрузки) -->
+        <!-- Динамическая область контента -->
         <main class="main-content" id="router-view">
-            <!-- Сюда script.js подставит активную страницу -->
+            <!-- Сюда JS подставит Dashboard или другие разделы -->
         </main>
     </div>
 
     <!-- Всплывающие уведомления (Toast) -->
     <div id="toast" class="toast">Система готова</div>
 
-    <!-- Подключение логики -->
+    <!-- Подключение скриптов -->
     <script src="script.js"></script>
 </body>
 </html>

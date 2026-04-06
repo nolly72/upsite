@@ -1,20 +1,27 @@
 // 1. Инициализация иконок Lucide
 lucide.createIcons();
 
-// 2. ДАННЫЕ ДЛЯ БЕГУЩЕЙ СТРОКИ (Много монет, без Nolly)
+// 2. ДАННЫЕ ДЛЯ БЕСКОНЕЧНОГО ТИКЕРА (20+ уникальных монет)
 const marketCoins = [
     {n: 'BTC', p: '68,432', c: '+2.4%'}, {n: 'ETH', p: '3,541', c: '+1.8%'},
     {n: 'SOL', p: '145.2', c: '-0.5%'}, {n: 'BNB', p: '591.3', c: '+0.2%'},
     {n: 'ADA', p: '0.45', c: '+4.1%'}, {n: 'XRP', p: '0.61', c: '-1.2%'},
     {n: 'DOT', p: '7.21', c: '+0.8%'}, {n: 'AVAX', p: '35.4', c: '+2.5%'},
     {n: 'LINK', p: '18.2', c: '+1.1%'}, {n: 'NEAR', p: '6.80', c: '+3.4%'},
-    {n: 'MATIC', p: '0.72', c: '-0.3%'}, {n: 'LTC', p: '82.15', c: '+1.5%'}
+    {n: 'MATIC', p: '0.72', c: '-0.3%'}, {n: 'LTC', p: '82.15', c: '+1.5%'},
+    {n: 'ATOM', p: '10.21', c: '+2.1%'}, {n: 'UNI', p: '7.45', c: '-0.8%'},
+    {n: 'APT', p: '9.12', c: '+5.4%'}, {n: 'ARB', p: '1.15', c: '+0.4%'},
+    {n: 'FIL', p: '5.82', c: '-1.1%'}, {n: 'ICP', p: '12.40', c: '+3.2%'},
+    {n: 'HBAR', p: '0.09', c: '+0.5%'}, {n: 'OP', p: '2.45', c: '+1.9%'}
 ];
 
 const tickerBox = document.getElementById('webticker');
-tickerBox.innerHTML = [...marketCoins, ...marketCoins].map(coin => `
+// Утроим массив, чтобы создать бесшовный цикл без "дырок"
+const longList = [...marketCoins, ...marketCoins, ...marketCoins];
+
+tickerBox.innerHTML = longList.map(coin => `
     <div class="ticker__item">
-        <span style="color: #fff; font-weight: 800;">${coin.n}</span>
+        <span style="color: #fff; font-weight: 800; border-bottom: 1px solid ${coin.c.includes('+') ? '#10b981' : '#f43f5e'}">${coin.n}</span>
         <span>$${coin.p}</span>
         <span style="color: ${coin.c.includes('+') ? '#10b981' : '#f43f5e'}">${coin.c}</span>
     </div>
@@ -64,13 +71,13 @@ const pageData = {
             </div>
             <div class="card">
                 <div class="card-title">Market Sentiment</div>
-                <div class="big-value" style="color: #fbbf24;">Greed</div>
-                <p>Индекс страха и жадности: 72/100. Рынок находится в фазе активного роста.</p>
+                <div class="big-value" style="color: #fbbf24;">Extreme Greed</div>
+                <p>Индекс жадности: 84/100. Рынок в фазе перегрева, рекомендуется фиксация прибыли.</p>
             </div>
             <div class="card">
                 <div class="card-title">Trading Volume</div>
-                <div class="big-value">$3.8B</div>
-                <p>Суммарный объем торгов по вашим парам вырос на 8% за последние 12 часов.</p>
+                <div class="big-value">$8.4B</div>
+                <p>Суммарный объем торгов вырос на 12% за последние 12 часов.</p>
             </div>
         </div>
     `,
@@ -89,13 +96,13 @@ const pageData = {
             </div>
             <div class="card">
                 <div class="card-title">Interface Style</div>
-                <div class="big-value">Glass Pro</div>
-                <p>Используется эффект матового стекла (Blur: 40px). Все углы скруглены по стандарту Zenith UI.</p>
+                <div class="big-value">Zenith Pro</div>
+                <p>Используется эффект матового стекла (Blur: 40px). Все углы скруглены по стандарту Zenith UI v.3.</p>
             </div>
         </div>
     `,
     security: `
-        <div class="page-header"><h1>Security</h1><p>Защита ваших активов и история безопасности</p></div>
+        <div class="page-header"><h1>Security</h1><p>Центр управления безопасностью ваших активов</p></div>
         <div class="grid">
             <div class="card" style="border-left: 5px solid #10b981;">
                 <div class="card-title">Security Shield</div>
@@ -105,7 +112,7 @@ const pageData = {
             <div class="card">
                 <div class="card-title">Identity Verification</div>
                 <div class="status-tag" style="background: #38bdf810; color: #38bdf8;">KYC VERIFIED</div>
-                <p style="margin-top: 15px;">Ваша личность подтверждена. Лимиты на вывод средств увеличены до $100k/день.</p>
+                <p style="margin-top: 15px;">Ваша личность подтверждена. Лимиты на вывод увеличены до $500k/день.</p>
             </div>
             <div class="card">
                 <div class="card-title">Login History</div>
@@ -126,7 +133,6 @@ function navigation(pageId, event) {
     const routerView = document.getElementById('router-view');
     routerView.innerHTML = pageData[pageId];
     
-    // Обновляем активный пункт меню
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
     if(event) {
         event.currentTarget.classList.add('active');
@@ -139,7 +145,7 @@ function navigation(pageId, event) {
         initChart();
         startAI();
     }
-    showToast(`Переход в раздел: ${pageId.toUpperCase()}`);
+    showToast(`Раздел: ${pageId.toUpperCase()}`);
 }
 
 // 5. ГРАФИК (Chart.js)
@@ -155,7 +161,7 @@ function initChart() {
         data: {
             labels: ['01:00', '04:00', '08:00', '12:00', '16:00', '20:00', '00:00'],
             datasets: [{
-                data:,
+                data: [42000, 48000, 45000, 52000, 58000, 54000, 62000],
                 borderColor: accentColor,
                 borderWidth: 4,
                 tension: 0.4,
@@ -203,13 +209,13 @@ function showToast(msg) {
     const toast = document.getElementById('toast');
     toast.innerText = msg;
     toast.style.right = '30px';
-    setTimeout(() => { toast.style.right = '-450px'; }, 3000);
+    setTimeout(() => { toast.style.right = '-500px'; }, 3000);
 }
 
 function action(type) {
     if(type === 'connect') {
-        showToast("Подключение MetaMask...");
-        setTimeout(() => showToast("Ошибка: Установите расширение"), 2000);
+        showToast("Подключение к WalletConnect...");
+        setTimeout(() => showToast("Ошибка: Метамаск не найден"), 2000);
     }
 }
 

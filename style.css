@@ -1,11 +1,11 @@
 /* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
 :root {
-    --bg: #030712;
-    --card: rgba(17, 24, 39, 0.6);
+    --bg: #020617;
+    --card: rgba(15, 23, 42, 0.6);
     --border: rgba(255, 255, 255, 0.06);
-    --accent: #38bdf8; /* Основной небесно-синий */
-    --text: #f3f4f6;
-    --text-dim: #9ca3af;
+    --accent: #38bdf8;
+    --text: #f8fafc;
+    --text-dim: #94a3b8;
     --up: #10b981;
     --down: #f43f5e;
     --round: 28px;
@@ -18,25 +18,52 @@ body {
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
-    background-image: radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
     min-height: 100vh;
 }
 
-/* --- БЕГУЩАЯ СТРОКА (МНОГО МОНЕТ) --- */
+/* --- БЕСКОНЕЧНЫЙ ТИКЕР (ФИШКА) --- */
 .ticker-wrap {
-    width: 100%; overflow: hidden; background: rgba(0,0,0,0.95);
-    border-bottom: 1px solid var(--border); padding: 14px 0;
-    position: fixed; top: 0; z-index: 2000;
+    width: 100%; 
+    overflow: hidden; 
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid var(--border); 
+    padding: 15px 0;
+    position: fixed; 
+    top: 0; 
+    z-index: 2000;
 }
-.ticker { display: flex; white-space: nowrap; animation: ticker 60s linear infinite; width: fit-content; }
-.ticker__item { padding: 0 40px; font-size: 13px; font-weight: 600; display: flex; gap: 10px; align-items: center; letter-spacing: 0.5px; }
 
-@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 80s linear infinite; /* Медленный премиальный ход */
+}
 
-/* --- ОСНОВНОЙ КОНТЕЙНЕР --- */
+.ticker:hover {
+    animation-play-state: paused; /* Остановка при наведении */
+}
+
+.ticker__item {
+    padding: 0 45px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.33%); } /* Бесшовный цикл */
+}
+
+/* --- ОСНОВНОЙ LAYOUT --- */
 .app-container { display: flex; min-height: 100vh; padding-top: 50px; }
 
-/* SIDEBAR (БОКОВАЯ ПАНЕЛЬ) */
+/* SIDEBAR */
 .sidebar {
     width: 280px; background: var(--card); backdrop-filter: blur(40px);
     border-right: 1px solid var(--border); padding: 40px 24px;
@@ -47,66 +74,62 @@ body {
 .logo { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 45px; letter-spacing: -2px; }
 .logo span { color: var(--accent); }
 
-.nav-menu { flex: 1; }
 .nav-link {
-    display: flex; align-items: center; gap: 14px; padding: 16px 20px;
-    color: var(--text-dim); text-decoration: none; border-radius: 20px;
+    display: flex; align-items: center; gap: 14px; padding: 16px 22px;
+    color: var(--text-dim); text-decoration: none; border-radius: 22px;
     margin-bottom: 10px; transition: var(--transition);
 }
-.nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.04); color: #fff; }
-.nav-link.active { border-left: 5px solid var(--accent); box-shadow: 15px 0 35px rgba(56, 189, 248, 0.08); }
+.nav-link:hover, .nav-link.active { background: rgba(255, 255, 255, 0.05); color: #fff; }
+.nav-link.active { border-left: 5px solid var(--accent); box-shadow: 15px 0 40px rgba(56, 189, 248, 0.1); }
 
 .sidebar-footer { margin-top: auto; display: flex; flex-direction: column; gap: 20px; }
-.system-badge { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 1px; }
+.system-badge { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 1.5px; }
 .pulse { width: 8px; height: 8px; background: var(--up); border-radius: 50%; box-shadow: 0 0 12px var(--up); animation: glow 2s infinite; }
 
-@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.9); } }
 
 /* MAIN CONTENT */
-.main-content { flex: 1; padding: 50px; max-width: 1300px; margin: 0 auto; width: 100%; }
+.main-content { flex: 1; padding: 50px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
 .page-header { margin-bottom: 45px; animation: slideUp 0.6s ease-out; }
-.page-header h1 { font-size: 40px; font-weight: 800; margin-bottom: 8px; letter-spacing: -1.5px; }
-.page-header p { color: var(--text-dim); font-size: 16px; }
+.page-header h1 { font-size: 42px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1.5px; }
+.page-header p { color: var(--text-dim); font-size: 18px; font-weight: 300; }
 
-/* --- ГРИД И КАРТОЧКИ --- */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+/* GRID & CARDS */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
 
 .card {
     background: var(--card); border: 1px solid var(--border);
     padding: 35px; border-radius: var(--round);
-    backdrop-filter: blur(20px); transition: var(--transition);
+    backdrop-filter: blur(25px); transition: var(--transition);
     animation: slideUp 0.8s ease-out;
 }
-.card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-8px); background: rgba(17, 24, 39, 0.85); }
+.card:hover { border-color: rgba(255, 255, 255, 0.15); transform: translateY(-8px); background: rgba(15, 23, 42, 0.85); }
 
-.card-title { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
-.big-value { font-size: 44px; font-weight: 800; margin-bottom: 12px; letter-spacing: -2.5px; }
+.card-title { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; }
+.big-value { font-size: 48px; font-weight: 800; margin-bottom: 12px; letter-spacing: -2.5px; }
 
-/* КНОПКИ */
+/* BUTTONS */
 .btn-wallet {
-    width: 100%; padding: 18px; border-radius: 22px; border: 2px solid var(--accent);
+    width: 100%; padding: 18px; border-radius: 24px; border: 2px solid var(--accent);
     background: transparent; color: var(--accent); font-weight: 800; cursor: pointer;
     display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.3s;
 }
-.btn-wallet:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px var(--accent); }
+.btn-wallet:hover { background: var(--accent); color: #000; box-shadow: 0 0 35px var(--accent); }
 
-/* TOAST (УВЕДОМЛЕНИЯ) */
+/* TOAST */
 .toast {
-    position: fixed; bottom: 35px; right: -450px; background: #fff; color: #000;
-    padding: 22px 45px; border-radius: 24px; font-weight: 900; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 3000;
+    position: fixed; bottom: 35px; right: -500px; background: #fff; color: #000;
+    padding: 22px 45px; border-radius: 25px; font-weight: 900; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 3000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* СПЕЦИАЛЬНЫЕ ЭЛЕМЕНТЫ ДЛЯ СТРАНИЦ */
-.chart-container { grid-column: 1 / -1; height: 380px; }
-.status-tag { display: inline-block; padding: 7px 14px; border-radius: 12px; font-size: 12px; font-weight: 800; background: rgba(16, 185, 129, 0.1); color: var(--up); }
+/* PAGES ELEMENTS */
+.chart-container { grid-column: 1 / -1; min-height: 400px; }
+.status-tag { display: inline-block; padding: 8px 16px; border-radius: 14px; font-size: 12px; font-weight: 800; background: rgba(16, 185, 129, 0.1); color: var(--up); }
 
-/* АДАПТИВНОСТЬ ПОД МОБИЛКИ */
-@media (max-width: 900px) {
-    .sidebar { 
-        width: 100%; height: 80px; position: fixed; bottom: 0; top: auto; 
-        flex-direction: row; padding: 10px 20px; border-top: 1px solid var(--border); border-right: none; 
-    }
+/* MOBILE */
+@media (max-width: 950px) {
+    .sidebar { width: 100%; height: 80px; position: fixed; bottom: 0; top: auto; flex-direction: row; padding: 10px 20px; border-top: 1px solid var(--border); border-right: none; }
     .logo, .nav-link span, .sidebar-footer { display: none; }
     .nav-link { margin: 0; padding: 15px; flex: 1; justify-content: center; }
     .main-content { padding: 30px; padding-bottom: 120px; }
