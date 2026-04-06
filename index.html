@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Home | Premium Smart Ecosystem</title>
+    
+    <!-- Google Fonts: Inter для интерфейса и Syne для заголовков (премиальный вид) -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Иконки и графики -->
+    <script src="https://unpkg.com"></script>
+    <script src="https://jsdelivr.net"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="luxury-theme">
+
+    <!-- Sidebar: Тонкий и элегантный -->
+    <aside class="sidebar glass-sidebar">
+        <div class="brand">
+            <div class="brand-logo"></div>
+            <span class="brand-name">Aura</span>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="nav-group">
+                <small>Обзор</small>
+                <a href="#" class="nav-link active"><i data-lucide="layout-grid"></i> <span>Панель управления</span></a>
+                <a href="#" class="nav-item"><i data-lucide="activity"></i> <span>Аналитика</span></a>
+            </div>
+            
+            <div class="nav-group">
+                <small>Управление</small>
+                <a href="#" class="nav-link"><i data-lucide="droplets"></i> <span>Климат-контроль</span></a>
+                <a href="#" class="nav-link"><i data-lucide="video"></i> <span>Безопасность</span></a>
+                <a href="#" class="nav-link"><i data-lucide="waves"></i> <span>Освещение</span></a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="themeToggle" class="mode-switch">
+                <i data-lucide="moon" class="dark-icon"></i>
+                <i data-lucide="sun" class="light-icon"></i>
+            </button>
+            <div class="user-brief">
+                <img src="https://ui-avatars.com" alt="User">
+                <div class="user-info">
+                    <p class="name">Александр</p>
+                    <p class="plan">Premium Access</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Основная рабочая область -->
+    <main class="main-content">
+        
+        <!-- Шапка с поиском и уведомлениями -->
+        <header class="main-header">
+            <div class="search-bar">
+                <i data-lucide="search"></i>
+                <input type="text" placeholder="Поиск устройств или сценариев...">
+            </div>
+            <div class="header-actions">
+                <div class="indicator">
+                    <span class="dot"></span>
+                    Система: Онлайн
+                </div>
+                <button class="icon-btn notification-btn">
+                    <i data-lucide="bell"></i>
+                    <span class="badge">2</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Секция приветствия -->
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>Добрый вечер, <span class="gradient-text">Александр</span></h1>
+                <p>В вашем доме идеальный баланс: 22°C и свежий воздух. Все системы в норме.</p>
+            </div>
+            <div class="quick-stats">
+                <div class="q-stat">
+                    <span class="q-label">Воздух</span>
+                    <span class="q-value">98% <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="q-stat">
+                    <span class="q-label">Энергия</span>
+                    <span class="q-value">1.2 kW <i data-lucide="zap"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сетка виджетов (Bento Grid Style) -->
+        <div class="bento-grid">
+            
+            <!-- Основной график (Большой виджет) -->
+            <div class="bento-item wide glass-card">
+                <div class="card-header">
+                    <h3>Энергопотребление</h3>
+                    <select class="minimal-select">
+                        <option>За неделю</option>
+                        <option>За месяц</option>
+                    </select>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="luxuryChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Управление климатом -->
+            <div class="bento-item tall glass-card climate-widget">
+                <h3>Климат</h3>
+                <div class="radial-control">
+                    <div class="temp-circle">
+                        <span class="temp-num" id="temp-val">22</span><span class="temp-unit">°C</span>
+                    </div>
+                </div>
+                <input type="range" id="temp-slider" min="16" max="30" value="22" class="luxury-slider">
+                <div class="climate-modes">
+                    <button class="mode-btn active">Auto</button>
+                    <button class="mode-btn">Eco</button>
+                    <button class="mode-btn">Heat</button>
+                </div>
+            </div>
+
+            <!-- Список активных устройств -->
+            <div class="bento-item medium glass-card">
+                <div class="card-header">
+                    <h3>Быстрый доступ</h3>
+                    <i data-lucide="more-horizontal"></i>
+                </div>
+                <div id="devices-container" class="luxury-devices">
+                    <!-- Заполняется через JS -->
+                </div>
+            </div>
+
+            <!-- Камеры / Безопасность -->
+            <div class="bento-item medium glass-card camera-preview">
+                <div class="card-header">
+                    <h3>Входная дверь</h3>
+                    <span class="live-tag">Live</span>
+                </div>
+                <div class="video-placeholder">
+                    <div class="overlay-icons">
+                        <i data-lucide="mic"></i>
+                        <i data-lucide="lock"></i>
+                    </div>
+                    <img src="https://unsplash.com" alt="Camera">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Подключаем логику -->
+    <script src="script.js"></script>
+</body>
+</html>
