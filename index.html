@@ -3,51 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY P1LS | VICE CITY PREMIERE</title>
+    <title>NOLLY P1LS | THE ELITE CLUB</title>
     
-    <!-- Шрифты -->
+    <!-- Премиальный округлый шрифт Comfortaa и жирный Montserrat -->
     <link href="https://googleapis.com" rel="stylesheet">
     
-    <!-- Стили -->
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="neon.css">
 </head>
 <body>
 
-    <!-- Анимированный фон (Miami Colors) -->
-    <div class="vice-gradient-bg"></div>
+    <!-- Живой фон (Смесь Вайба МСК и ЛА) -->
+    <div class="night-vibe-bg"></div>
 
     <nav>
         <div class="logo">NOLLY P1LS</div>
         <div class="nav-links">
-            <button onclick="scrollToSection('about')">ABOUT</button>
-            <button onclick="scrollToSection('lineup')">LINEUP</button>
-            <button onclick="scrollToSection('soon')">SOON</button>
-            <button onclick="scrollToSection('menu')">MENU</button>
-            <button class="btn-glass vip-trigger" onclick="openVipMap()">VIP MAP</button>
-            <button class="btn-glow-cyan" onclick="openBooking()">BOOK</button>
+            <button onclick="scrollToSection('about')">О КЛУБЕ</button>
+            <button onclick="scrollToSection('lineup')">АРТИСТЫ</button>
+            <button onclick="scrollToSection('soon')">АНОНСЫ</button>
+            <button onclick="scrollToSection('menu')">МЕНЮ</button>
+            <button class="btn-glass vip-trigger" onclick="openVipMap()">VIP КАРТА</button>
+            <button class="btn-glow-cyan" onclick="openBooking()">RESERVE</button>
         </div>
     </nav>
 
-    <!-- ГЛАВНЫЙ ЭКРАН С ФОНОМ -->
+    <!-- ГЛАВНЫЙ ЭКРАН (Весь текст одного стиля и размера) -->
     <header class="hero" id="home">
         <div class="hero-image-bg" style="background-image: url('img/hero-bg.jpg');"></div>
         <div class="hero-content">
-            <h2 class="hero-top-text">MOSCOW NIGHTS</h2>
-            <h1 class="hero-main-title">NOLLY P1LS</h1>
-            <h3 class="hero-bottom-text">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</h3>
+            <h2 class="hero-unified-text">MOSCOW NIGHTS</h2>
+            <h1 class="hero-unified-text">NOLLY P1LS</h1>
+            <h3 class="hero-unified-text">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</h3>
         </div>
     </header>
 
-    <!-- О НАС (Glassmorphism) -->
+    <!-- О НАС (Премиальное описание) -->
     <section id="about" class="section reveal">
         <div class="glass-panel">
-            <h2 class="section-title">VICE EXPERIENCE</h2>
-            <p class="section-desc">Эстетика Майами 80-х в современном прочтении. Глубокий звук, премиальный сервис и атмосфера, которой нет равных в Москве.</p>
+            <h2 class="section-title">ЭПИЦЕНТР НОЧНОЙ ЭСТЕТИКИ</h2>
+            <p class="section-desc">
+                NOLLY P1LS — это концептуальное пространство в самом сердце столицы, где роскошь ночного Лос-Анджелеса встречается с неудержимой энергией Москвы. Мы создали не просто ночной клуб, а место силы для тех, кто диктует правила жизни. На нашей сцене еженедельно зажигают главные звезды индустрии — от титанов новой школы до культовых артистов мирового масштаба. 
+                <br><br>
+                Каждая деталь нашего интерьера пропитана атмосферой элитных закрытых вечеринок: стеклянные поверхности, глубокий неон и звук Void Acoustics, который погружает в состояние абсолютного драйва. Наша команда обеспечивает безупречный премиальный сервис, гарантируя приватность и комфорт самого высокого уровня. NOLLY P1LS — это эксклюзивные коктейли, авторская кухня и сообщество, в котором каждый вечер становится историей. Твой билет в новую реальность уже ждет тебя.
+            </p>
         </div>
     </section>
 
-    <!-- ТЕКУЩИЙ LINEUP -->
+    <!-- ТЕКУЩИЕ АРТИСТЫ -->
     <section id="lineup" class="section reveal">
         <h2 class="section-title-large">NOW <span class="cyan">PLAYING</span></h2>
         <div class="artist-grid">
@@ -57,7 +60,7 @@
         </div>
     </section>
 
-    <!-- COMING SOON (НОВЫЙ РАЗДЕЛ) -->
+    <!-- АНОНСЫ (Скоро) -->
     <section id="soon" class="section reveal">
         <h2 class="section-title-large">COMING <span class="pink">SOON</span></h2>
         <div class="soon-grid">
@@ -77,27 +80,49 @@
         <p class="listing-update">СПИСОК БУДЕТ ПОПОЛНЯТЬСЯ...</p>
     </section>
 
-    <!-- МЕНЮ С ФОНОМ -->
+    <!-- РАСШИРЕННОЕ МЕНЮ (15 + 15) -->
     <section id="menu" class="section menu-section reveal">
         <div class="menu-image-bg" style="background-image: url('img/menu-bg.jpg');"></div>
         <div class="glass-panel menu-glass">
             <h2 class="section-title">KITCHEN & BAR</h2>
             <div class="menu-columns">
+                <!-- 15 БЛЮД -->
                 <div class="menu-col">
-                    <h4>FOOD</h4>
+                    <h4>КУХНЯ</h4>
                     <p>WAGYU STEAK <span>8900</span></p>
+                    <p>BLACK CAVIAR SET <span>15000</span></p>
                     <p>LOBSTER ROLL <span>5400</span></p>
                     <p>TRUFFLE PASTA <span>3200</span></p>
-                    <p>BLACK CAVIAR <span>15000</span></p>
-                    <p>OYSTERS X6 <span>4800</span></p>
+                    <p>OYSTERS X12 <span>8600</span></p>
+                    <p>TARTAR BEEF <span>2100</span></p>
+                    <p>OCTOPUS GRILLED <span>4500</span></p>
+                    <p>KING PRAWNS <span>3900</span></p>
+                    <p>DUCK CONFIT <span>2800</span></p>
+                    <p>P1LS BURGER <span>2400</span></p>
+                    <p>SCALLOPS NEON <span>3500</span></p>
+                    <p>TUNA TATAKI <span>2700</span></p>
+                    <p>BURRATA PREM <span>1900</span></p>
+                    <p>FOIE GRAS <span>4200</span></p>
+                    <p>GOLD DESSERT <span>1500</span></p>
                 </div>
+                <!-- 15 НАПИТКОВ -->
                 <div class="menu-col">
-                    <h4>DRINKS</h4>
+                    <h4>БАР</h4>
                     <p>DOM PERIGNON <span>85000</span></p>
+                    <p>ARMAND DE BRIGNAC <span>120000</span></p>
                     <p>VICE COCKTAIL <span>2500</span></p>
-                    <p>NEON GIN <span>1800</span></p>
+                    <p>NEON GIN TONIC <span>1800</span></p>
                     <p>CRYSTAL SHOT <span>1200</span></p>
                     <p>GOLDEN MARGARITA <span>3000</span></p>
+                    <p>WHISKY 21Y <span>5500</span></p>
+                    <p>TEQUILA ANEJO <span>3500</span></p>
+                    <p>VODKA LUX <span>1100</span></p>
+                    <p>COGNAC XO <span>6200</span></p>
+                    <p>P1LS PUNCH <span>2200</span></p>
+                    <p>BLACK MARTINI <span>2100</span></p>
+                    <p>SOSA MULE <span>1900</span></p>
+                    <p>AZURE SPRITZ <span>2000</span></p>
+                    <p>ENERGY P1L <span>800</span></p>
                 </div>
             </div>
             <button class="balls-btn">BALLS <3</button>
@@ -114,11 +139,11 @@
         </div>
     </section>
 
-    <!-- VIP КАРТА (Blueprint) -->
+    <!-- VIP КАРТА ( Blueprint) -->
     <div id="vipModal" class="modal">
         <div class="modal-box glass-modal wide">
             <span class="close-btn" onclick="closeVipMap()">&times;</span>
-            <h2 class="modal-title">CLUB BLUEPRINT</h2>
+            <h2 class="modal-title blue">VIP BLUEPRINT</h2>
             <div class="club-blueprint">
                 <div class="bp-stage">STAGE</div>
                 <div class="bp-middle">
@@ -128,9 +153,9 @@
                         <div class="t-item free">3</div><div class="t-item occupied">4</div>
                         <div class="t-item free">5</div><div class="t-item free">6</div>
                     </div>
-                    <div class="bp-bar">LONG BAR</div>
+                    <div class="bp-bar">BAR AREA</div>
                 </div>
-                <div class="bp-entrance">ENTRANCE</div>
+                <div class="bp-entrance">ENTRANCE / FC</div>
             </div>
         </div>
     </div>
@@ -141,16 +166,16 @@
             <span class="close-btn" onclick="closeBooking()">&times;</span>
             <h2 class="modal-title pink">RESERVE</h2>
             <form id="bookingForm">
-                <input type="text" placeholder="NAME" required>
+                <input type="text" placeholder="ВАШЕ ИМЯ" required>
                 <input type="tel" id="phone" placeholder="+7 (___)" required>
-                <button type="submit" class="btn-glow-pink">CONFIRM</button>
+                <button type="submit" class="btn-glow-pink">ПОДТВЕРДИТЬ</button>
             </form>
         </div>
     </div>
 
     <!-- AI ASSISTANT -->
-    <div class="ai-assistant-vice" id="bot">
-        <div class="bot-header" onclick="toggleBot()">VICE ASSISTANT</div>
+    <div class="ai-assistant-vibe" id="bot">
+        <div class="bot-header" onclick="toggleBot()">P1LS ASSISTANT</div>
         <div class="bot-window" id="bot-ui">
             <div id="bot-messages"></div>
             <div id="bot-options"></div>

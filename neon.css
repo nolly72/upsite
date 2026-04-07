@@ -1,47 +1,49 @@
-/* --- VICE CITY PALETTE --- */
+/* --- КЛУБНАЯ ПАЛИТРА (МСК x ЛА) --- */
 :root {
     --cyan: #00f3ff;
     --pink: #ff00ff;
     --purple: #bc00ff;
-    --deep-blue: #05001a;
-    --glass: rgba(255, 255, 255, 0.05);
+    --white: #ffffff;
+    --glass-border: rgba(255, 255, 255, 0.15);
 }
 
-/* --- ТИПОГРАФИКА --- */
+/* --- ТИПОГРАФИКА И СВЕЧЕНИЕ --- */
 .logo {
     color: var(--cyan);
     text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--purple);
 }
 
-.hero-main-title {
-    color: #fff;
-    text-transform: uppercase;
-    /* Четкий премиальный неон */
-    text-shadow: 
-        0 0 20px var(--cyan),
-        0 0 40px var(--purple);
+/* Унифицированный Hero-текст (Один дизайн на все строки) */
+.hero-unified-text {
+    color: var(--white);
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    animation: glowPulse 4s infinite ease-in-out;
 }
 
-.hero-top-text { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
-.hero-bottom-text { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.6); }
+    50% { text-shadow: 0 0 40px rgba(0, 243, 255, 0.9), 0 0 10px var(--purple); }
+}
 
 .cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
 .pink { color: var(--pink); text-shadow: 0 0 15px var(--pink); }
 
-/* --- КНОПКИ (VICE STYLE) --- */
+/* --- КНОПКИ (PREMIUM VICE) --- */
 .btn-glass {
-    background: var(--glass);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    color: var(--cyan);
-    padding: 10px 20px;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 15px;
     backdrop-filter: blur(10px);
-    transition: 0.3s;
+    transition: 0.4s;
+    font-weight: 700;
 }
 
 .btn-glass:hover {
-    background: rgba(0, 243, 255, 0.1);
-    box-shadow: 0 0 20px var(--cyan);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
     transform: translateY(-2px);
 }
 
@@ -49,16 +51,16 @@
     background: var(--cyan);
     color: #000;
     border: none;
-    padding: 10px 25px;
-    border-radius: 12px;
+    padding: 12px 30px;
+    border-radius: 15px;
     font-weight: 900;
-    box-shadow: 0 0 20px var(--cyan);
+    box-shadow: 0 0 25px var(--cyan);
     transition: 0.4s;
     cursor: pointer;
 }
 
 .btn-glow-cyan:hover {
-    box-shadow: 0 0 40px var(--cyan);
+    box-shadow: 0 0 45px var(--cyan);
     transform: scale(1.05);
 }
 
@@ -67,11 +69,12 @@
     color: #fff;
     border: none;
     padding: 15px 30px;
-    border-radius: 15px;
+    border-radius: 20px;
     font-weight: 900;
     width: 100%;
-    box-shadow: 0 0 20px var(--pink);
+    box-shadow: 0 0 30px var(--pink);
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .balls-btn {
@@ -81,22 +84,26 @@
     padding: 15px 40px;
     border-radius: 50px;
     font-weight: 900;
-    margin-top: 30px;
+    margin-top: 40px;
     cursor: pointer;
-    box-shadow: 0 0 15px var(--pink);
+    box-shadow: 0 0 20px var(--pink);
     transition: 0.4s;
 }
 
 .balls-btn:hover {
     background: var(--pink);
     color: #fff;
-    box-shadow: 0 0 40px var(--pink);
+    box-shadow: 0 0 50px var(--pink);
 }
 
-/* --- КАРТОЧКИ --- */
+/* --- КАРТОЧКИ И ГЛАССМОРФИЗМ --- */
+.glass-panel {
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
 .artist-card, .soon-card {
-    border: 1px solid rgba(0, 243, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--glass-border);
     transition: 0.5s;
 }
 
@@ -105,20 +112,25 @@
     box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
 }
 
-.artist-name, .soon-info h3 {
+.artist-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 1.4rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-.soon-info p { color: var(--pink); font-weight: 800; }
-
-.promo-666 { border: 2px solid var(--pink) !important; }
-.promo-666 .soon-info h3 { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
+.promo-666 {
+    border: 2px solid var(--pink) !important;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+}
 
 /* --- VIP КАРТА (BLUEPRINT) --- */
-.club-blueprint { border: 1px solid var(--cyan); }
+.bp-stage {
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+    background: rgba(0, 243, 255, 0.05);
+}
+
 .t-item.free {
     border: 2px solid var(--cyan);
     color: var(--cyan);
@@ -128,50 +140,58 @@
 .t-item.free:hover {
     background: var(--cyan);
     color: #000;
-    box-shadow: 0 0 25px var(--cyan);
+    box-shadow: 0 0 30px var(--cyan);
 }
 
 .t-item.occupied {
     border: 2px solid var(--pink);
     color: var(--pink);
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
-.bp-bar { border: 1px solid var(--cyan); color: var(--cyan); }
-
 /* --- AI ASSISTANT --- */
-.ai-assistant-vice { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.2); }
+.ai-assistant-vibe {
+    border-color: var(--cyan);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+}
+
 #bot-options button {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    color: #fff;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+    padding: 12px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
+    font-family: 'Comfortaa', cursive;
 }
 
 #bot-options button:hover {
     background: var(--cyan);
     color: #000;
+    border-color: var(--cyan);
 }
 
 /* --- ФОРМЫ --- */
 input {
-    background: rgba(255,255,255,0.05) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    padding: 18px;
     color: #fff;
-    border-radius: 12px;
+    border-radius: 15px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     outline: none;
+    font-family: 'Comfortaa', cursive;
 }
 
-input:focus { border-color: var(--cyan) !important; box-shadow: 0 0 10px var(--cyan); }
+input:focus {
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
 
 /* --- СКРОЛЛБАР --- */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #05001a; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #05000a; }
 ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
