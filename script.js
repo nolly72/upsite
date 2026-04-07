@@ -209,11 +209,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.table-group').forEach(t => {
         t.onclick = () => {
             const body = t.querySelector('.t-body');
-            if (body.classList.contains('free')) {
+            if (body && body.classList.contains('free')) {
                 alert(`Стол №${body.innerText} выбран. Переходим к оформлению.`);
                 closeVipMap();
                 openBooking();
-            } else {
+            } else if (body) {
                 alert('Этот стол уже забронирован под приватное мероприятие.');
             }
         };
