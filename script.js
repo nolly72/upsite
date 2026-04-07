@@ -1,143 +1,119 @@
 /**
- * NOLLY P1LS - Official Logic & AI Assistant
+ * NOLLY P1LS - Official Club Logic
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. ЛОГИКА ИИ-БОТА ---
-    const botMessages = document.getElementById('bot-messages');
-    const botOptions = document.getElementById('bot-options');
-    const botBody = document.getElementById('bot-body');
+    const messagesContainer = document.getElementById('messages');
+    const optionsContainer = document.getElementById('options');
+    const botUI = document.getElementById('bot-ui');
 
-    // База знаний бота (Вопросы и Ответы)
-    const aiData = {
+    // База данных бота
+    const botLogic = {
         start: {
-            msg: "Салют! Я виртуальный хостес NOLLY P1LS. Чем могу помочь?",
+            msg: "Добро пожаловать в NOLLY P1LS. Я твой проводник в мир ночи. Что подсказать?",
             options: [
-                { text: "Как забронировать стол?", next: "booking" },
-                { text: "Какой сегодня дресс-код?", next: "dresscode" },
-                { text: "Кто выступает в пятницу?", next: "lineup" }
+                { text: "Как попасть в VIP?", next: "vip_access" },
+                { text: "Какой дресс-код?", next: "dress" },
+                { text: "Кто сегодня за пультом?", next: "lineup" }
             ]
         },
-        booking: {
-            msg: "Бронирование доступно через кнопку RESERVE в меню или прямо на схеме столов. Какие условия интересуют?",
+        vip_access: {
+            msg: "VIP-доступ открывает вход в ложи и на Backstage. Столы бронируются по депозиту. Показать схему?",
             options: [
-                { text: "Депозит за стол", next: "deposit" },
-                { text: "VIP-локации", next: "vip_info" },
-                { text: "Назад", next: "start" }
+                { text: "Да, покажи столы", next: "action_open_vip" },
+                { text: "Условия депозита", next: "deposit" }
             ]
         },
         deposit: {
-            msg: "Депозиты начинаются от 50.000₽ за малый стол и от 150.000₽ за ложу. Хотите посмотреть свободные места?",
-            options: [
-                { text: "Да, открыть схему", next: "open_map_action" },
-                { text: "Нужен менеджер", next: "manager" }
-            ]
+            msg: "Депозит за стол в VIP-зоне начинается от 100.000₽. В стоимость включен личный хостес и охрана.",
+            options: [{ text: "Понял, спасибо", next: "start" }]
         },
-        vip_info: {
-            msg: "Наши VIP-ложи находятся на втором уровне с отдельным баром и выходом на Backstage. Интересует приватность?",
-            options: [
-                { text: "Да, сколько мест?", next: "vip_capacity" },
-                { text: "Назад", next: "start" }
-            ]
+        dress: {
+            msg: "Мы за стиль. Black Tie, Fashion Archive или элитный Streetwear. В спортивках вход закрыт.",
+            options: [{ text: "А в костюме можно?", next: "suit" }]
         },
-        vip_capacity: {
-            msg: "VIP-ложи вмещают до 12 человек. В стоимость входит личный официант и охрана.",
-            options: [{ text: "Окей, понял", next: "start" }]
-        },
-        dresscode: {
-            msg: "Мы ценим стиль. Сегодня у нас Black Tie & Fashion Forward. Никакого спорта и масс-маркета.",
-            options: [{ text: "А в кроссовках можно?", next: "shoes" }]
-        },
-        shoes: {
-            msg: "Только если это лимитированные коллаборации. Фейс-контроль очень строгий.",
-            options: [{ text: "Принято", next: "start" }]
+        suit: {
+            msg: "Костюм — идеальный выбор. Наши двери открыты для тебя.",
+            options: [{ text: "Отлично", next: "start" }]
         },
         lineup: {
-            msg: "В эту пятницу у нас OG BUDA. На следующей — MAYOT. Ждем тебя на разнос!",
-            options: [{ text: "Круто, спасибо!", next: "start" }]
+            msg: "Сегодня ждем OG BUDA. На следующей неделе — MAYOT и ПЛАТИНА. Будет жарко.",
+            options: [{ text: "Забронировать место", next: "action_open_book" }]
         },
-        manager: {
-            msg: "Менеджер ответит вам по номеру в форме бронирования. Оставьте заявку!",
-            options: [{ text: "Ок", next: "start" }]
-        }
+        action_open_vip: { msg: "Открываю схему VIP-зала...", options: [{ text: "Ок", next: "start" }] },
+        action_open_book: { msg: "Открываю форму бронирования...", options: [{ text: "Ок", next: "start" }] }
     };
 
-    function renderStep(stepKey) {
-        if (stepKey === "open_map_action") {
-            openMap();
-            stepKey = "start";
-        }
-        
-        const data = aiData[stepKey];
-        botMessages.innerHTML += `<div class="bot-msg bot">${data.msg}</div>`;
-        botOptions.innerHTML = '';
-        
-        data.options.forEach(opt => {
+    function showBotStep(stepKey) {
+        // Выполнение действий, если шаг — это экшн
+        if (stepKey === "action_open_vip") { openVipMap(); }
+        if (stepKey === "action_open_book") { openBooking(); }
+
+        const step = botLogic[stepKey] || botLogic.start;
+        messagesContainer.innerHTML += `<div style="margin-bottom:10px; color:#00f3ff;">AI: ${step.msg}</div>`;
+        optionsContainer.innerHTML = '';
+
+        step.options.forEach(opt => {
             const btn = document.createElement('button');
             btn.innerText = opt.text;
             btn.onclick = () => {
-                botMessages.innerHTML += `<div class="bot-msg user-msg">${opt.text}</div>`;
-                setTimeout(() => renderStep(opt.next), 500);
-                botMessages.scrollTop = botMessages.scrollHeight;
+                messagesContainer.innerHTML += `<div style="margin-bottom:10px; text-align:right;">Вы: ${opt.text}</div>`;
+                setTimeout(() => showBotStep(opt.next), 400);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
             };
-            botOptions.appendChild(btn);
+            optionsContainer.appendChild(btn);
         });
-        botMessages.scrollTop = botMessages.scrollHeight;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
     window.toggleBot = () => {
-        const isHidden = botBody.style.display === 'none' || botBody.style.display === '';
-        botBody.style.display = isHidden ? 'flex' : 'none';
-        if (isHidden && botMessages.innerHTML === '') renderStep('start');
+        const isClosed = botUI.style.display === 'none' || botUI.style.display === '';
+        botUI.style.display = isClosed ? 'flex' : 'none';
+        if (isClosed && messagesContainer.innerHTML === '') showBotStep('start');
     };
 
-    // --- 2. СХЕМА КЛУБА (МОДАЛКИ) ---
-    const mapModal = document.getElementById('mapModal');
-    
-    window.openMap = () => {
-        mapModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+    // --- 2. УПРАВЛЕНИЕ МОДАЛКАМИ ---
+    const vipModal = document.getElementById('vipModal');
+    const bookModal = document.getElementById('bookModal');
+
+    window.openVipMap = () => { vipModal.style.display = 'block'; document.body.style.overflow = 'hidden'; };
+    window.closeVipMap = () => { vipModal.style.display = 'none'; document.body.style.overflow = 'auto'; };
+
+    window.openBooking = () => { bookModal.style.display = 'block'; document.body.style.overflow = 'hidden'; };
+    window.closeBooking = () => { bookModal.style.display = 'none'; document.body.style.overflow = 'auto'; };
+
+    // Закрытие по клику вне окна
+    window.onclick = (e) => {
+        if (e.target == vipModal) closeVipMap();
+        if (e.target == bookModal) closeBooking();
     };
 
-    window.closeMap = () => {
-        mapModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
-
-    // --- 3. ПЛАВНЫЙ СКРОЛЛ ---
+    // --- 3. СКРОЛЛ И ФОРМА ---
     window.scrollToSection = (id) => {
         const el = document.getElementById(id);
-        if (el) {
-            window.scrollTo({
-                top: el.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+        if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
     };
 
-    // --- 4. КЛИКИ ПО СТОЛАМ ---
-    document.querySelectorAll('.table.free').forEach(table => {
-        table.onclick = () => {
-            alert(`Стол №${table.innerText} выбран. Переходим к бронированию...`);
-            closeMap();
-            openBooking(); // функция из старого кода, убедись что она есть
-        };
+    const phone = document.getElementById('phone');
+    phone.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 0) e.target.value = '+7 (' + v.substring(1,4) + ') ' + v.substring(4,7) + '-' + v.substring(7,9) + '-' + v.substring(9,11);
     });
 
-    // --- 5. УПРАВЛЕНИЕ МОДАЛКОЙ БРОНИ ---
-    // (Повторяем для автономности файла)
-    const bookingModal = document.getElementById('bookingModal');
-    window.openBooking = () => {
-        if(bookingModal) bookingModal.style.display = 'block';
-    };
-    window.closeBooking = () => {
-        if(bookingModal) bookingModal.style.display = 'none';
+    document.getElementById('bookForm').onsubmit = (e) => {
+        e.preventDefault();
+        alert('SOSA! Заявка принята. Ожидайте звонка от NOLLY P1LS.');
+        closeBooking();
     };
 
-    // Закрытие модалок по клику вне окна
-    window.onclick = (e) => {
-        if (e.target == mapModal) closeMap();
-        if (e.target == bookingModal) closeBooking();
-    };
+    // Клики по свободным столам
+    document.querySelectorAll('.t.free').forEach(t => {
+        t.onclick = () => {
+            alert(`Стол №${t.innerText} выбран.`);
+            closeVipMap();
+            openBooking();
+        };
+    });
 });

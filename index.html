@@ -3,85 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY P1LS | PREMIUM CLUB</title>
+    <title>NOLLY P1LS | MOSCOW NIGHTS</title>
+    
+    <!-- Самый жирный и читабельный шрифт -->
     <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Подключаем файлы стилей -->
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="neon.css">
 </head>
 <body>
 
-    <!-- Живой градиентный фон -->
-    <div class="bg-gradient"></div>
+    <!-- Анимированный клубный фон -->
+    <div class="bg-vibe"></div>
 
+    <!-- Навигация -->
     <nav>
         <div class="logo">NOLLY P1LS</div>
-        <div class="nav-right">
-            <button class="nav-btn" onclick="scrollToSection('about')">О НАС</button>
-            <button class="nav-btn" onclick="openMap()">СВОБОДНЫЕ СТОЛЫ</button>
-            <button class="booking-trigger" onclick="openBooking()">RESERVE</button>
+        <div class="nav-links">
+            <button onclick="scrollToSection('about')">О НАС</button>
+            <button onclick="scrollToSection('news')">АРТИСТЫ</button>
+            <button class="vip-btn" onclick="openVipMap()">VIP СТОЛЫ</button>
+            <button class="reserve-btn" onclick="openBooking()">RESERVE</button>
         </div>
     </nav>
 
+    <!-- Главный экран -->
     <header class="hero">
-        <div class="hero-content">
-            <div class="neon-badge">MOSCOW NIGHTS</div>
-            <h1 class="main-title">NOLLY <br><span class="accent-text">P1LS</span></h1>
-            <p class="hero-subtitle">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</p>
+        <div class="hero-container">
+            <div class="badge">MOSCOW NIGHTS</div>
+            <h1 class="hero-title">NOLLY <span class="glow">P1LS</span></h1>
+            <p class="hero-tagline">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</p>
         </div>
     </header>
 
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2 class="section-title">О НАС</h2>
-            <p>NOLLY P1LS — это не просто клуб, это закрытая экосистема ночной Москвы. Мы объединили звук мирового уровня Void Acoustics, футуристичный дизайн и атмосферу полной свободы. Здесь стираются границы между реальностью и вайбом. Три бара, VIP-ложи с видом на мейн и лучшие артисты индустрии — всё это P1LS.</p>
+    <!-- О нас -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="title">О НАС</h2>
+            <p class="text">NOLLY P1LS — это закрытая экосистема ночной Москвы. Звук Void Acoustics, футуристичный дизайн и атмосфера полной свободы. Здесь стираются границы между реальностью и вайбом.</p>
         </div>
     </section>
 
-    <!-- Секция Новостей (Артисты) -->
-    <section id="news" class="news-section">
-        <div class="news-grid">
-            <article class="news-card">
-                <div class="img-container"><img src="img/buda.jpg" class="card-img"></div>
-                <div class="card-body"><h3>OG BUDA</h3><p>Secret Show & New Tracks.</p></div>
-            </article>
-            <article class="news-card">
-                <div class="img-container"><img src="img/mayot.jpg" class="card-img"></div>
-                <div class="card-body"><h3>MAYOT</h3><p>Live Performance.</p></div>
-            </article>
-            <article class="news-card">
-                <div class="img-container"><img src="img/platina.jpg" class="card-img"></div>
-                <div class="card-body"><h3>ПЛАТИНА</h3><p>Sosa Party Night.</p></div>
-            </article>
-        </div>
-    </section>
-
-    <!-- Схема клуба (Модалка) -->
-    <div id="mapModal" class="modal">
-        <div class="modal-content map-content">
-            <span class="close-btn" onclick="closeMap()">&times;</span>
-            <h2 class="blue-text">СХЕМА ЗАЛА</h2>
-            <div class="club-map">
-                <div class="stage">STAGE / АРТИСТЫ</div>
-                <div class="tables-grid">
-                    <div class="table occupied">1</div><div class="table free">2</div>
-                    <div class="table free">3</div><div class="table occupied">4</div>
-                    <div class="table occupied">5</div><div class="table free">6</div>
-                    <div class="table free">7</div><div class="table free">8</div>
-                </div>
-                <div class="bar-zone">BAR AREA</div>
+    <!-- Артисты (Новости) -->
+    <section id="news" class="section news">
+        <div class="container">
+            <h2 class="title">EXCLUSIVE <span class="pink">FEED</span></h2>
+            <div class="news-grid">
+                <!-- Артист 1 -->
+                <article class="artist-card">
+                    <div class="img-box"><img src="img/buda.jpg" alt="OG Buda"></div>
+                    <div class="card-info">
+                        <h3>OG BUDA</h3>
+                        <p>Secret Show & New Tracks. Homecoming 2026.</p>
+                    </div>
+                </article>
+                <!-- Артист 2 -->
+                <article class="artist-card">
+                    <div class="img-box"><img src="img/mayot.jpg" alt="Mayot"></div>
+                    <div class="card-info">
+                        <h3>MAYOT</h3>
+                        <p>Live Performance & Special Guests.</p>
+                    </div>
+                </article>
+                <!-- Артист 3 -->
+                <article class="artist-card">
+                    <div class="img-box"><img src="img/platina.jpg" alt="Platina"></div>
+                    <div class="card-info">
+                        <h3>ПЛАТИНА</h3>
+                        <p>Sosa Party Night. Самый стильный звук.</p>
+                    </div>
+                </article>
             </div>
-            <p class="map-hint">Зеленый — свободен | Красный — занят</p>
+        </div>
+    </section>
+
+    <!-- Вкладка VIP (Схема столов) -->
+    <div id="vipModal" class="modal">
+        <div class="modal-box vip-box">
+            <span class="close" onclick="closeVipMap()">&times;</span>
+            <h2 class="title blue">VIP СХЕМА ЗАЛА</h2>
+            <div class="map-container">
+                <div class="stage-label">STAGE / SCENE</div>
+                <div class="tables-layout">
+                    <div class="t occupied">1</div><div class="t free">2</div>
+                    <div class="t free">3</div><div class="t occupied">4</div>
+                    <div class="t occupied">5</div><div class="t free">6</div>
+                    <div class="t free">7</div><div class="t occupied">8</div>
+                </div>
+                <div class="bar-label">BAR AREA</div>
+            </div>
+            <p class="legend"><span class="f"></span> - Свободно | <span class="o"></span> - Занято</p>
         </div>
     </div>
 
-    <!-- ИИ БОТ -->
-    <div id="ai-bot" class="ai-bot">
-        <div class="bot-header" onclick="toggleBot()">
-            <span>P1LS AI ASSISTANT</span>
+    <!-- Модалка бронирования -->
+    <div id="bookModal" class="modal">
+        <div class="modal-box">
+            <span class="close" onclick="closeBooking()">&times;</span>
+            <h2 class="title pink">RESERVE TABLE</h2>
+            <form id="bookForm" class="form">
+                <input type="text" placeholder="ВАШЕ ИМЯ" required>
+                <input type="tel" id="phone" placeholder="+7 (___) ___ - __ - __" required>
+                <select>
+                    <option>DANCEFLOOR VIP</option>
+                    <option>LOUNGE ZONE</option>
+                    <option>BACKSTAGE</option>
+                </select>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАЯВКУ</button>
+            </form>
         </div>
-        <div id="bot-body" class="bot-body">
-            <div id="bot-messages"></div>
-            <div id="bot-options"></div>
+    </div>
+
+    <!-- ИИ БОТ АССИСТЕНТ -->
+    <div id="bot" class="ai-bot">
+        <div class="bot-header" onclick="toggleBot()">P1LS AI ASSISTANT</div>
+        <div id="bot-ui" class="bot-ui">
+            <div id="messages" class="messages"></div>
+            <div id="options" class="options"></div>
         </div>
     </div>
 

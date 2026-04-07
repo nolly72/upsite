@@ -1,146 +1,162 @@
 /* --- КЛУБНАЯ ПАЛИТРА --- */
 :root {
-    --neon-blue: #00f3ff;
-    --neon-pink: #ff00ff;
-    --neon-purple: #9d00ff;
-    --neon-magenta: #ff0055;
-    --neon-green: #00ff88;
+    --n-blue: #00f3ff;
+    --n-pink: #ff00ff;
+    --n-purple: #9d00ff;
+    --n-magenta: #ff0055;
+    --n-green: #00ff88;
 }
 
-/* --- ТИПОГРАФИКА --- */
+/* --- ТИПОГРАФИКА И СВЕЧЕНИЕ --- */
 .logo {
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
-    text-transform: uppercase;
+    color: var(--n-blue);
+    text-shadow: 0 0 10px var(--n-blue), 0 0 20px var(--n-purple);
+    letter-spacing: 3px;
+    font-weight: 900;
 }
 
-.main-title {
+.hero-title {
     color: #fff;
     text-transform: uppercase;
-    /* Эффект многослойного неонового свечения */
+    /* Тройной слой неона для глубины */
     text-shadow: 
-        4px 4px 0px var(--neon-purple),
-        -4px -4px 0px var(--neon-pink),
-        0 0 30px var(--neon-blue);
-    letter-spacing: -2px;
+        3px 3px 0px var(--n-purple),
+        -3px -3px 0px var(--n-pink),
+        0 0 40px var(--n-blue);
 }
 
-.accent-text {
-    color: var(--neon-blue);
-    filter: drop-shadow(0 0 15px var(--neon-blue));
+.glow {
+    color: var(--n-blue);
+    filter: drop-shadow(0 0 15px var(--n-blue));
 }
 
-.hero-subtitle {
+.hero-tagline {
     color: #fff;
-    font-weight: 800;
-    letter-spacing: 8px;
-    text-shadow: 0 0 10px var(--neon-pink);
-    opacity: 0.9;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px var(--n-pink);
+    text-transform: uppercase;
+    opacity: 0.8;
 }
 
-.neon-badge {
-    background: transparent;
-    color: var(--neon-green);
-    border: 2px solid var(--neon-green);
-    box-shadow: 0 0 15px var(--neon-green), inset 0 0 5px var(--neon-green);
-    text-shadow: 0 0 5px var(--neon-green);
+.badge {
+    color: var(--n-green);
+    border: 2px solid var(--n-green);
+    padding: 6px 15px;
+    border-radius: 50px;
+    box-shadow: 0 0 15px var(--n-green), inset 0 0 5px var(--n-green);
+    display: inline-block;
 }
 
 /* --- КНОПКИ --- */
-.booking-trigger, .main-btn {
+.vip-btn {
+    border: 2px solid var(--n-purple) !important;
+    color: var(--n-purple) !important;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px var(--n-purple);
+    border-radius: 5px;
+}
+
+.vip-btn:hover {
+    background: var(--n-purple);
+    color: #000 !important;
+    box-shadow: 0 0 30px var(--n-purple);
+}
+
+.reserve-btn, .submit-btn {
     background: transparent;
-    border: 3px solid var(--neon-blue);
-    color: var(--neon-blue);
-    padding: 15px 40px;
-    border-radius: 0; /* Острые формы выглядят более клубными */
+    border: 2px solid var(--n-blue);
+    color: var(--n-blue);
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 900;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+    transition: 0.3s;
+}
+
+.reserve-btn:hover, .submit-btn:hover {
+    background: var(--n-blue);
+    color: #000;
+    box-shadow: 0 0 40px var(--n-blue);
+    transform: scale(1.05);
+}
+
+/* --- СЕКЦИИ И КАРТОЧКИ --- */
+.title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.pink { color: var(--n-pink); text-shadow: 0 0 15px var(--n-pink); }
+.blue { color: var(--n-blue); text-shadow: 0 0 15px var(--n-blue); }
+
+.artist-card {
+    border: 1px solid rgba(157, 0, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: 0.4s;
+}
+
+.artist-card:hover {
+    border-color: var(--n-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+    transform: translateY(-10px);
+}
+
+.artist-card h3 {
+    color: var(--n-blue);
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 10px;
 }
 
-.booking-trigger:hover, .main-btn:hover {
-    background: var(--neon-blue);
+/* --- VIP СХЕМА --- */
+.vip-box {
+    border: 2px solid var(--n-purple);
+    box-shadow: 0 0 50px var(--n-purple);
+}
+
+.stage-label {
+    border-bottom: 2px dashed var(--n-blue);
+    color: var(--n-blue);
+    padding-bottom: 10px;
+}
+
+.t.free:hover {
+    background: var(--n-green);
     color: #000;
-    box-shadow: 0 0 50px var(--neon-blue);
-    transform: translateY(-3px) skewX(-5deg); /* Небольшой наклон для динамики */
+    box-shadow: 0 0 20px var(--n-green);
 }
 
-/* --- СЕКЦИЯ НОВОСТЕЙ --- */
-.news-card {
-    border: 1px solid var(--neon-purple);
-    background: rgba(15, 0, 30, 0.8);
-    backdrop-filter: blur(10px);
-}
-
-.news-card:hover {
-    border-color: var(--neon-pink);
-    box-shadow: 0 0 30px var(--neon-pink);
-}
-
-.news-card h3 {
-    color: var(--neon-blue);
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-/* --- СХЕМА КЛУБА --- */
-.club-map {
-    border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 20px var(--neon-purple);
-}
-
-.table.free:hover {
-    background: var(--neon-green);
-    color: #000;
-    box-shadow: 0 0 30px var(--neon-green);
-}
+.legend .f { background: var(--n-green); width: 10px; height: 10px; display: inline-block; border-radius: 50%; }
+.legend .o { background: var(--n-magenta); width: 10px; height: 10px; display: inline-block; border-radius: 50%; }
 
 /* --- ИИ БОТ --- */
 .ai-bot {
-    border: 2px solid var(--neon-blue);
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+    border: 1px solid var(--n-blue);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
 }
 
 .bot-header {
-    background: var(--neon-blue);
+    background: var(--n-blue);
     color: #000;
+    text-transform: uppercase;
 }
 
-.bot-msg.bot {
-    border-left: 3px solid var(--neon-pink);
-}
-
-.user-msg {
-    background: var(--neon-blue) !important;
-    box-shadow: 0 0 10px var(--neon-blue);
-}
-
-#bot-options button:hover {
-    border-color: var(--neon-pink);
-    color: var(--neon-pink);
-    box-shadow: 0 0 10px var(--neon-pink);
-}
-
-/* --- МОДАЛЬНЫЕ ОКНА --- */
-.modal-content {
-    border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 50px var(--neon-purple);
-}
-
-.close-btn:hover {
-    color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink);
+.options button:hover {
+    background: var(--n-pink) !important;
+    color: #fff;
+    box-shadow: 0 0 15px var(--n-pink);
 }
 
 /* --- АНИМАЦИИ --- */
 @keyframes neonPulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    50% { opacity: 0.8; }
 }
 
-.main-title {
-    animation: neonPulse 4s ease-in-out infinite;
+.hero-title {
+    animation: neonPulse 3s ease-in-out infinite;
 }
