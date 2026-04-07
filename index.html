@@ -3,120 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY P1LS | NEON DISTRICT</title>
-    
-    <!-- Шрифты: Comfortaa (круглый) и Montserrat (жирный) -->
+    <title>NOLLY P1LS | PREMIUM CLUB</title>
     <link href="https://googleapis.com" rel="stylesheet">
-    
-    <!-- Стили проекта (разделены на 2 файла) -->
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="neon.css">
 </head>
 <body>
 
-    <!-- Навигация -->
+    <!-- Живой градиентный фон -->
+    <div class="bg-gradient"></div>
+
     <nav>
         <div class="logo">NOLLY P1LS</div>
         <div class="nav-right">
-            <button class="nav-btn" onclick="scrollToSection('news')">НОВОСТИ</button>
-            <button class="booking-trigger" onclick="openBooking()">ЗАБРОНИРОВАТЬ</button>
+            <button class="nav-btn" onclick="scrollToSection('about')">О НАС</button>
+            <button class="nav-btn" onclick="openMap()">СВОБОДНЫЕ СТОЛЫ</button>
+            <button class="booking-trigger" onclick="openBooking()">RESERVE</button>
         </div>
     </nav>
 
-    <!-- Главный экран -->
     <header class="hero">
         <div class="hero-content">
             <div class="neon-badge">MOSCOW NIGHTS</div>
-            <h1 class="main-title">NOLLY <span class="accent-text">P1LS</span></h1>
+            <h1 class="main-title">NOLLY <br><span class="accent-text">P1LS</span></h1>
             <p class="hero-subtitle">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</p>
-            <div class="hero-actions">
-                <button class="main-btn" onclick="openBooking()">RESERVE NOW</button>
-            </div>
         </div>
     </header>
 
-    <!-- Секция Новостей -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2 class="section-title">О НАС</h2>
+            <p>NOLLY P1LS — это не просто клуб, это закрытая экосистема ночной Москвы. Мы объединили звук мирового уровня Void Acoustics, футуристичный дизайн и атмосферу полной свободы. Здесь стираются границы между реальностью и вайбом. Три бара, VIP-ложи с видом на мейн и лучшие артисты индустрии — всё это P1LS.</p>
+        </div>
+    </section>
+
+    <!-- Секция Новостей (Артисты) -->
     <section id="news" class="news-section">
-        <h2 class="section-title">EXCLUSIVE <span class="pink-text">FEED</span></h2>
-        
         <div class="news-grid">
-            <!-- Карточка: OG BUDA -->
             <article class="news-card">
-                <div class="card-tag hot">SOLD OUT SOON</div>
-                <div class="img-container">
-                    <img src="img/buda.jpg" alt="OG Buda" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3>OG BUDA: HOMECOMING</h3>
-                    <p>Гриша залетает в NOLLY P1LS с секретным шоу. Презентация треков, которые еще не слышал никто. Будет «Very Scary», бронируй заранее!</p>
-                    <div class="card-footer">
-                        <span class="date">12 АПРЕЛЯ</span>
-                        <span class="category">EVENT</span>
-                    </div>
-                </div>
+                <div class="img-container"><img src="img/buda.jpg" class="card-img"></div>
+                <div class="card-body"><h3>OG BUDA</h3><p>Secret Show & New Tracks.</p></div>
             </article>
-
-            <!-- Карточка: MAYOT & VOSKRESENSKIY -->
             <article class="news-card">
-                <div class="card-tag">NEW COLLAB</div>
-                <div class="img-container">
-                    <img src="img/mayot.jpg" alt="Mayot" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3>MAYOT x VOSKRESENSKIY</h3>
-                    <p>Тюменский десант в Москве! Майотик и Воскресенский готовят совместный лайв. Только живой звук, только фирменный вайб NOLLY P1LS.</p>
-                    <div class="card-footer">
-                        <span class="date">19 АПРЕЛЯ</span>
-                        <span class="category">LIVE</span>
-                    </div>
-                </div>
+                <div class="img-container"><img src="img/mayot.jpg" class="card-img"></div>
+                <div class="card-body"><h3>MAYOT</h3><p>Live Performance.</p></div>
             </article>
-
-            <!-- Карточка: ПЛАТИНА -->
             <article class="news-card">
-                <div class="card-tag special">VVIP GUEST</div>
-                <div class="img-container">
-                    <img src="img/platina.jpg" alt="Platina" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3>ПЛАТИНА: SOSA PARTY</h3>
-                    <p>Роберт Платина закрывает месяц большим сольным выступлением. Ожидаем самый стильный звук сезона и полный "Sosa Muzik" вайб.</p>
-                    <div class="card-footer">
-                        <span class="date">26 АПРЕЛЯ</span>
-                        <span class="category">SOSA</span>
-                    </div>
-                </div>
+                <div class="img-container"><img src="img/platina.jpg" class="card-img"></div>
+                <div class="card-body"><h3>ПЛАТИНА</h3><p>Sosa Party Night.</p></div>
             </article>
         </div>
     </section>
 
-    <!-- Модальное окно бронирования -->
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeBooking()">&times;</span>
-            <h2 class="modal-title">RESERVE <span class="blue-text">TABLE</span></h2>
-            <p class="modal-desc">Оставьте данные, и наш хостес подтвердит бронь в течение 10 минут</p>
-            
-            <form id="bookingForm" class="booking-form">
-                <div class="input-group">
-                    <input type="text" id="name" placeholder="ВАШЕ ИМЯ" required>
+    <!-- Схема клуба (Модалка) -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content map-content">
+            <span class="close-btn" onclick="closeMap()">&times;</span>
+            <h2 class="blue-text">СХЕМА ЗАЛА</h2>
+            <div class="club-map">
+                <div class="stage">STAGE / АРТИСТЫ</div>
+                <div class="tables-grid">
+                    <div class="table occupied">1</div><div class="table free">2</div>
+                    <div class="table free">3</div><div class="table occupied">4</div>
+                    <div class="table occupied">5</div><div class="table free">6</div>
+                    <div class="table free">7</div><div class="table free">8</div>
                 </div>
-                <div class="input-group">
-                    <input type="tel" id="phone" placeholder="+7 (___) ___ - __ - __" required>
-                </div>
-                <div class="input-group">
-                    <select id="zone">
-                        <option value="dance">DANCEFLOOR VIP (ОТ 50К)</option>
-                        <option value="lounge">LOUNGE ZONE (ОТ 100К)</option>
-                        <option value="backstage">BACKSTAGE (PRIVATE)</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАЯВКУ</button>
-            </form>
+                <div class="bar-zone">BAR AREA</div>
+            </div>
+            <p class="map-hint">Зеленый — свободен | Красный — занят</p>
         </div>
     </div>
 
-    <!-- Скрипты -->
+    <!-- ИИ БОТ -->
+    <div id="ai-bot" class="ai-bot">
+        <div class="bot-header" onclick="toggleBot()">
+            <span>P1LS AI ASSISTANT</span>
+        </div>
+        <div id="bot-body" class="bot-body">
+            <div id="bot-messages"></div>
+            <div id="bot-options"></div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

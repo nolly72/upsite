@@ -1,4 +1,4 @@
-/* --- БАЗОВАЯ СТРУКТУРА --- */
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ (Montserrat везде) --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +6,30 @@
 }
 
 body {
-    background-color: #000;
+    background: #05000a;
     color: #fff;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
-    line-height: 1.6;
+    line-height: 1.4;
+}
+
+/* --- ЖИВОЙ КЛУБНЫЙ ФОН --- */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #05000a, #1a0033, #000a1a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* --- НАВИГАЦИЯ --- */
@@ -18,162 +37,157 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 25px 5%;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
 }
 
 .nav-right {
     display: flex;
-    gap: 20px;
-    align-items: center;
+    gap: 15px;
 }
 
-/* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+.nav-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* --- HERO СЕКЦИЯ --- */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     text-align: center;
-    padding: 0 20px;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 10;
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    letter-spacing: 4px;
+.main-title {
+    font-size: clamp(3.5rem, 15vw, 10rem);
+    font-weight: 900;
+    line-height: 0.85;
     margin: 20px 0;
-    font-weight: 300;
 }
 
-/* --- СЕКЦИЯ НОВОСТЕЙ --- */
-.news-section {
-    padding: 120px 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    margin-bottom: 60px;
+/* --- О НАС --- */
+.about-section {
+    padding: 100px 10%;
     text-align: center;
 }
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.about-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+    color: #ccc;
 }
 
-.news-card {
-    background: #0a0a0a;
-    border-radius: 30px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-/* --- ФИКСАЦИЯ РАЗМЕРА ФОТО --- */
-.img-container {
-    width: 100%;
-    height: 280px; /* Жесткая высота для всех картинок */
-    overflow: hidden;
+/* --- СХЕМА КЛУБА (MODAL & GRID) --- */
+.club-map {
     background: #111;
-}
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Фото заполняет блок без искажений */
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.card-body {
     padding: 30px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    border-radius: 20px;
+    margin: 20px 0;
 }
 
-.card-body h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 12px;
+.stage {
+    background: #222;
+    padding: 15px;
+    margin-bottom: 30px;
+    font-weight: 800;
+    border: 2px dashed #444;
 }
 
-.card-body p {
-    font-size: 0.95rem;
-    color: #bbb;
-    margin-bottom: 25px;
+.tables-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.card-footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
+.table {
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.table.free { background: rgba(0, 255, 136, 0.2); border: 2px solid #00ff88; color: #00ff88; }
+.table.occupied { background: rgba(255, 0, 85, 0.2); border: 2px solid #ff0055; color: #ff0055; cursor: not-allowed; }
+
+.bar-zone {
+    background: #00f3ff22;
+    border: 2px solid #00f3ff;
+    padding: 10px;
     font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 1px;
 }
 
-/* --- МОДАЛЬНОЕ ОКНО --- */
-.modal {
-    display: none;
+/* --- ИИ БОТ (БАЗА) --- */
+.ai-bot {
     position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
     z-index: 2000;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.92);
+    background: #0f0f0f;
+    border: 1px solid #333;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
 }
 
-.modal-content {
-    position: relative;
-    background: #0f0f0f;
-    margin: 8vh auto;
-    padding: 50px 30px;
-    width: 90%;
-    max-width: 480px;
-    border-radius: 40px;
+.bot-header {
+    background: #1a1a1a;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 0.7rem;
     text-align: center;
 }
 
-.booking-form {
-    display: flex;
+.bot-body {
+    height: 400px;
+    display: none; /* Открывается по клику */
     flex-direction: column;
-    gap: 18px;
-    margin-top: 25px;
+    padding: 15px;
 }
 
-input, select {
+#bot-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.bot-msg { margin-bottom: 10px; padding: 10px; border-radius: 10px; background: #222; }
+.user-msg { background: #00f3ff; color: #000; font-weight: 700; }
+
+#bot-options button {
     width: 100%;
-    padding: 16px;
-    background: #181818;
-    border: 1px solid #333;
-    border-radius: 15px;
+    padding: 8px;
+    margin-bottom: 5px;
+    background: #1a1a1a;
+    border: 1px solid #444;
     color: #fff;
-    font-family: inherit;
-    font-size: 1rem;
-    outline: none;
-}
-
-/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
-@media (max-width: 768px) {
-    nav { padding: 15px 5%; }
-    .nav-btn { display: none; }
-    .news-grid { grid-template-columns: 1fr; }
-    .img-container { height: 220px; }
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-size: 0.75rem;
 }
