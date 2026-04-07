@@ -1,50 +1,69 @@
-/* --- КЛУБНАЯ ПАЛИТРА (МСК x ЛА) --- */
+/* --- ULTIMATE NIGHT VIBE PALETTE --- */
 :root {
     --cyan: #00f3ff;
     --pink: #ff00ff;
     --purple: #bc00ff;
     --white: #ffffff;
-    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-/* --- ТИПОГРАФИКА И СВЕЧЕНИЕ --- */
+/* --- ТИПОГРАФИКА --- */
+body, button, input, select, textarea {
+    font-family: 'Comfortaa', cursive !important;
+}
+
+/* Логотип */
 .logo {
     color: var(--cyan);
+    font-weight: 900;
     text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--purple);
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
-/* Унифицированный Hero-текст (Один дизайн на все строки) */
+/* ГЛАВНЫЙ ЭКРАН (Унифицированный гигантский неон) */
 .hero-unified-text {
     color: var(--white);
-    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(188, 0, 255, 0.4);
     animation: glowPulse 4s infinite ease-in-out;
 }
 
 @keyframes glowPulse {
-    0%, 100% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.6); }
-    50% { text-shadow: 0 0 40px rgba(0, 243, 255, 0.9), 0 0 10px var(--purple); }
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 10px var(--purple); 
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 40px rgba(0, 243, 255, 0.9), 0 0 30px var(--pink); 
+        transform: scale(1.02);
+    }
 }
 
+/* Акценты */
 .cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
 .pink { color: var(--pink); text-shadow: 0 0 15px var(--pink); }
+.blue { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
 
-/* --- КНОПКИ (PREMIUM VICE) --- */
+/* --- КНОПКИ (ПРЕМИУМ ОБВОДКА И СВЕЧЕНИЕ) --- */
 .btn-glass {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     color: var(--white);
     padding: 12px 25px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    transition: 0.4s;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 700;
+    cursor: pointer;
 }
 
 .btn-glass:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--cyan);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+    transform: translateY(-3px);
 }
 
 .btn-glow-cyan {
@@ -60,7 +79,7 @@
 }
 
 .btn-glow-cyan:hover {
-    box-shadow: 0 0 45px var(--cyan);
+    box-shadow: 0 0 50px var(--cyan);
     transform: scale(1.05);
 }
 
@@ -75,6 +94,11 @@
     box-shadow: 0 0 30px var(--pink);
     cursor: pointer;
     text-transform: uppercase;
+    transition: 0.4s;
+}
+
+.btn-glow-pink:hover {
+    box-shadow: 0 0 50px var(--pink);
 }
 
 .balls-btn {
@@ -86,7 +110,7 @@
     font-weight: 900;
     margin-top: 40px;
     cursor: pointer;
-    box-shadow: 0 0 20px var(--pink);
+    box-shadow: 0 0 15px var(--pink);
     transition: 0.4s;
 }
 
@@ -96,54 +120,77 @@
     box-shadow: 0 0 50px var(--pink);
 }
 
-/* --- КАРТОЧКИ И ГЛАССМОРФИЗМ --- */
-.glass-panel {
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-}
-
+/* --- КАРТОЧКИ АРТИСТОВ --- */
 .artist-card, .soon-card {
     border: 1px solid var(--glass-border);
-    transition: 0.5s;
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .artist-card:hover, .soon-card:hover {
     border-color: var(--cyan);
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.25);
 }
 
 .artist-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 1.4rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    color: var(--white);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
 }
 
 .promo-666 {
     border: 2px solid var(--pink) !important;
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.3) !important;
 }
+
+/* --- СТИЛИЗАЦИЯ ИНФО-МОДАЛКИ (АРТИСТ) --- */
+.modal-artist-head {
+    border-bottom: 2px solid var(--glass-border);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-artist-head h2 {
+    color: var(--white);
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.modal-price {
+    color: var(--cyan);
+    font-weight: 900;
+    text-shadow: 0 0 10px var(--cyan);
+}
+
+.modal-club-info {
+    border-left: 4px solid var(--pink);
+    background: rgba(255, 0, 255, 0.03);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.modal-club-info p strong { color: var(--pink); }
 
 /* --- VIP КАРТА (BLUEPRINT) --- */
 .bp-stage {
     color: var(--cyan);
     text-shadow: 0 0 15px var(--cyan);
     background: rgba(0, 243, 255, 0.05);
+    border: 1px dashed var(--cyan) !important;
 }
 
-.t-item.free {
+.t-body.free {
     border: 2px solid var(--cyan);
     color: var(--cyan);
     transition: 0.3s;
 }
 
-.t-item.free:hover {
+.table-group:hover .t-body.free {
     background: var(--cyan);
     color: #000;
     box-shadow: 0 0 30px var(--cyan);
 }
 
-.t-item.occupied {
+.t-body.occupied {
     border: 2px solid var(--pink);
     color: var(--pink);
     opacity: 0.3;
@@ -155,43 +202,55 @@
     box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
 }
 
+.bot-header {
+    background: var(--cyan);
+    color: #000;
+    font-weight: 900;
+}
+
+.bot-msg-in {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+    border-left: 3px solid var(--cyan);
+}
+
+.bot-msg-in span { color: var(--cyan); font-weight: 700; }
+
+.bot-msg-out {
+    color: #fff;
+    background: rgba(255,0,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+    align-self: flex-end;
+    border-right: 3px solid var(--pink);
+}
+
+.bot-msg-out span { color: var(--pink); font-weight: 700; }
+
 #bot-options button {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     color: var(--white);
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 12px;
+    padding: 8px 15px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
-    font-family: 'Comfortaa', cursive;
+    font-size: 0.75rem;
 }
 
 #bot-options button:hover {
     background: var(--cyan);
     color: #000;
-    border-color: var(--cyan);
-}
-
-/* --- ФОРМЫ --- */
-input {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid var(--glass-border) !important;
-    padding: 18px;
-    color: #fff;
-    border-radius: 15px;
-    width: 100%;
-    margin-bottom: 25px;
-    outline: none;
-    font-family: 'Comfortaa', cursive;
-}
-
-input:focus {
-    border-color: var(--cyan) !important;
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 15px var(--cyan);
 }
 
 /* --- СКРОЛЛБАР --- */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #05000a; }
-::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
+::-webkit-scrollbar-thumb { 
+    background: var(--cyan); 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px var(--cyan);
+}
