@@ -95,44 +95,78 @@
 
 <!-- РАСШИРЕННОЕ МЕНЮ -->
 <section id="menu" class="section menu-section reveal">
-    <!-- Фоновое изображение секции -->
-    <div class="menu-image-bg">
-        <img src="img/menu-bg.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;">
+    <!-- Слой с фоновым фото -->
+    <div class="menu-image-bg-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+        <img src="img/menu-bg.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4);">
     </div>
 
     <div class="glass-panel menu-glass">
-        <h2 class="section-title">KITCHEN & BAR</h2>
-        <div class="menu-columns">
-            <div class="menu-col">
-                <h4>КУХНЯ</h4>
-                <p>WAGYU STEAK <span>8900</span></p>
-                <p>BLACK CAVIAR SET <span>15000</span></p>
-                <p>LOBSTER ROLL <span>5400</span></p>
-                <p>TRUFFLE PASTA <span>3200</span></p>
-                <p>OYSTERS X12 <span>8600</span></p>
-                <p>TARTAR BEEF <span>2100</span></p>
-                <p>OCTOPUS GRILLED <span>4500</span></p>
-                <p>KING PRAWNS <span>3900</span></p>
-                <p>DUCK CONFIT <span>2800</span></p>
-                <p>P1LS BURGER <span>2400</span></p>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">KITCHEN & BAR</h2>
+        
+        <div class="menu-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            
+            <!-- ЛЕВАЯ СТОРОНА: КУХНЯ -->
+            <div class="menu-category">
+                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px;">КУХНЯ</h4>
+                <div class="sub-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div class="menu-sub-col">
+                        <p>WAGYU STEAK <span>8900</span></p>
+                        <p>BLACK CAVIAR <span>15000</span></p>
+                        <p>LOBSTER ROLL <span>5400</span></p>
+                        <p>TRUFFLE PASTA <span>3200</span></p>
+                        <p>OYSTERS X12 <span>8600</span></p>
+                    </div>
+                    <div class="menu-sub-col">
+                        <p>TARTAR BEEF <span>2100</span></p>
+                        <p>OCTOPUS <span>4500</span></p>
+                        <p>KING PRAWNS <span>3900</span></p>
+                        <p>DUCK CONFIT <span>2800</span></p>
+                        <p>P1LS BURGER <span>2400</span></p>
+                    </div>
+                </div>
             </div>
-            <div class="menu-col">
-                <h4>БАР</h4>
-                <p>DOM PERIGNON <span>85000</span></p>
-                <p>ARMAND DE BRIGNAC <span>120000</span></p>
-                <p>VICE COCKTAIL <span>2500</span></p>
-                <p>NEON GIN TONIC <span>1800</span></p>
-                <p>CRYSTAL SHOT <span>1200</span></p>
-                <p>GOLDEN MARGARITA <span>3000</span></p>
-                <p>WHISKY 21Y <span>5500</span></p>
-                <p>TEQUILA ANEJO <span>3500</span></p>
-                <p>VODKA LUX <span>1100</span></p>
-                <p>P1LS PUNCH <span>2200</span></p>
+
+            <!-- ПРАВАЯ СТОРОНА: БАР -->
+            <div class="menu-category">
+                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px;">БАР</h4>
+                <div class="sub-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div class="menu-sub-col">
+                        <p>DOM PERIGNON <span>85000</span></p>
+                        <p>ARMAND DE B. <span>120000</span></p>
+                        <p>VICE COCKTAIL <span>2500</span></p>
+                        <p>NEON GIN <span>1800</span></p>
+                        <p>CRYSTAL SHOT <span>1200</span></p>
+                    </div>
+                    <div class="menu-sub-col">
+                        <p>GOLDEN MARG. <span>3000</span></p>
+                        <p>WHISKY 21Y <span>5500</span></p>
+                        <p>TEQUILA ANEJO <span>3500</span></p>
+                        <p>VODKA LUX <span>1100</span></p>
+                        <p>P1LS PUNCH <span>2200</span></p>
+                    </div>
+                </div>
             </div>
+
         </div>
-        <button class="balls-btn">BALLS <3</button>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="balls-btn">BALLS <3</button>
+        </div>
     </div>
 </section>
+
+<!-- ГАЛЕРЕЯ -->
+<section id="gallery" class="section reveal">
+    <h2 class="section-title-large">INSIDE <span class="cyan">P1LS</span></h2>
+    <div class="premium-gallery-container">
+        <div class="gallery-track">
+            <div class="gallery-item"><img src="img/gallery1.jpg" alt="1"></div>
+            <div class="gallery-item"><img src="img/gallery2.jpg" alt="2"></div>
+            <div class="gallery-item"><img src="img/gallery3.jpg" alt="3"></div>
+        </div>
+    </div>
+</section>
+
 
 <!-- ГАЛЕРЕЯ -->
 <section id="gallery" class="section reveal">
