@@ -222,3 +222,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const ballsBtn = document.querySelector('.balls-btn');
     if (ballsBtn) ballsBtn.onclick = () => alert('LOVE IS IN THE AIR. SEE YOU AT NOLLY P1LS <3');
 });
+
+
+// Добавь это в конец своего script.js, если хочешь, чтобы номер стола попадал в пожелания:
+document.querySelectorAll('.table-group').forEach(t => {
+    t.onclick = () => {
+        const body = t.querySelector('.t-body');
+        if (body && body.classList.contains('free')) {
+            const tableNum = body.innerText;
+            const wishesField = document.getElementById('wishes');
+            if (wishesField) wishesField.value = `Бронь стола №${tableNum}`;
+            closeVipMap();
+            openBooking();
+        }
+    };
+});

@@ -1,55 +1,92 @@
-/* neon.css */
+/* neon.css - Ultimate Night Vibe & UI */
 
 :root {
     --cyan: #00f3ff;
     --pink: #ff00ff;
     --purple: #bc00ff;
+    --white: #ffffff;
+    --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-/* --- СВЕЧЕНИЕ ТЕКСТА --- */
+/* --- ТИПОГРАФИКА (Фикс шрифтов) --- */
+body, button, input, select, textarea {
+    font-family: ui-rounded, 'Quicksand', -apple-system, sans-serif !important;
+}
+
 .logo {
     color: var(--cyan);
+    font-weight: 900;
     text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--purple);
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .hero-unified-text {
+    color: var(--white);
     text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(188, 0, 255, 0.4);
-    animation: glowPulse 4s infinite ease-in-out;
-}
-
-@keyframes glowPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.02); opacity: 0.9; }
 }
 
 .cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
 .pink { color: var(--pink); text-shadow: 0 0 15px var(--pink); }
 .blue { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
 
-/* --- КНОПКИ --- */
-.btn-glass {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 10px 20px;
-    color: #fff;
-    transition: 0.3s;
+/* --- ОБНОВЛЕННЫЙ ФУТЕР --- */
+.club-footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 60px 20px;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
 }
 
-.btn-glass:hover {
-    border-color: var(--cyan);
-    box-shadow: 0 0 15px var(--cyan);
+.footer-location {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.footer-hours {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.footer-rules {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tag {
+    border: 1px solid var(--glass-border);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+}
+
+/* --- КНОПКИ --- */
+.btn-glass {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
 }
 
 .btn-glow-cyan {
     background: var(--cyan);
     color: #000;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 28px;
     border-radius: 12px;
     font-weight: 900;
     box-shadow: 0 0 20px var(--cyan);
+    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -66,80 +103,103 @@
     border-radius: 12px;
     font-weight: 900;
     box-shadow: 0 0 20px var(--pink);
-    cursor: pointer;
+    width: 100%;
 }
 
-.balls-btn {
-    background: transparent;
-    border: 2px solid var(--pink);
-    color: var(--pink);
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 900;
-    margin-top: 20px;
-    box-shadow: 0 0 10px var(--pink);
-    cursor: pointer;
-}
-
-/* --- VIP КАРТА (BLUEPRINT) --- */
+/* --- VIP КАРТА (BLUEPRINT V2) --- */
 .real-club-map {
-    border: 1px solid rgba(0, 243, 255, 0.3);
     background: rgba(0, 243, 255, 0.02);
-    padding: 30px;
-    border-radius: 20px;
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    border-radius: 25px;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.map-entrance-gate {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #05000a;
+    padding: 0 15px;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 3px;
+}
+
+.top-tables-zone {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.t-body {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin: 8px 0;
+    transition: 0.3s;
 }
 
 .t-body.free {
     border: 2px solid var(--cyan);
     color: var(--cyan);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .t-body.free:hover {
     background: var(--cyan);
     color: #000;
-    box-shadow: 0 0 20px var(--cyan);
+    box-shadow: 0 0 25px var(--cyan);
 }
 
 .t-body.occupied {
     border: 2px solid var(--pink);
     color: var(--pink);
-    opacity: 0.3;
-    border-radius: 10px;
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+.seats {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
 }
 
 .seats span {
-    width: 8px; height: 8px;
-    background: var(--cyan);
+    width: 6px;
+    height: 6px;
+    background: currentColor;
     border-radius: 50%;
-    display: inline-block;
-    margin: 0 2px;
+    opacity: 0.4;
 }
 
 .bp-stage {
-    margin-top: 30px;
-    padding: 20px;
+    padding: 25px;
     border: 1px dashed var(--cyan);
+    border-radius: 15px;
     color: var(--cyan);
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
-/* --- AI ASSISTANT --- */
+/* --- AI ASSISTANT BOT --- */
 .ai-assistant-vibe {
     position: fixed;
-    bottom: 100px; right: 20px;
+    bottom: 100px;
+    right: 25px;
     width: 300px;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10,10,10,0.95);
     border: 1px solid var(--cyan);
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
     z-index: 3000;
     box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
 }
@@ -153,47 +213,39 @@
     border-radius: 19px 19px 0 0;
 }
 
-.bot-body {
-    height: 250px;
-    padding: 15px;
-    overflow-y: auto;
+.bot-msg-in {
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 12px;
+    border-left: 3px solid var(--cyan);
+    margin-bottom: 10px;
     font-size: 0.85rem;
 }
 
-.bot-footer {
+.bot-msg-out {
+    background: rgba(255,0,255,0.05);
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border-right: 3px solid var(--pink);
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
 }
 
 .bot-footer button {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
     color: #fff;
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.7rem;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .bot-footer button:hover {
     border-color: var(--cyan);
     color: var(--cyan);
-}
-
-.bot-trigger {
-    position: fixed;
-    bottom: 25px; right: 25px;
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    background: var(--cyan);
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 3001;
-    box-shadow: 0 0 20px var(--cyan);
 }
 
 /* --- СКРОЛЛБАР --- */
