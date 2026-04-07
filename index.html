@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NOLLY P1LS | THE ELITE CLUB</title>
     
-    <!-- Исправленные ссылки на премиальные шрифты -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Премиальные шрифты -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@900&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="neon.css">
@@ -34,7 +34,7 @@
     <header class="hero" id="home">
         <div class="hero-image-bg" style="background-image: url('img/hero-bg.jpg');"></div>
         <div class="hero-content">
-            <h2 class="hero-unified-text">MOSCOW NIGHTS</h2>
+            <h2 class="hero-unified-text cyan">MOSCOW NIGHTS</h2>
             <h1 class="hero-unified-text">NOLLY P1LS</h1>
             <h3 class="hero-unified-text">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</h3>
         </div>
@@ -45,9 +45,11 @@
         <div class="glass-panel">
             <h2 class="section-title">ЭПИЦЕНТР НОЧНОЙ ЭСТЕТИКИ</h2>
             <p class="section-desc">
-                NOLLY P1LS — это концептуальное пространство на Патриарших прудах, где роскошь ночного Лос-Анджелеса встречается с энергией Москвы. 
+                NOLLY P1LS — это концептуальное пространство на Патриарших прудах, где роскошь ночного Лос-Анджелеса встречается с неудержимой энергией Москвы. 
                 <br><br>
-                Звук Void Acoustics, премиальный сервис и закрытое сообщество. Твой билет в новую реальность на Малой Бронной уже ждет тебя.
+                Звук Void Acoustics, премиальный сервис и закрытое сообщество. Это не просто клуб, это закрытое комьюнити, объединенное страстью к качественному звуку и эстетике ночи. Здесь каждый элемент создан для тех, кто привык брать от жизни максимум.
+                <br><br>
+                Твой билет в новую реальность на Малой Бронной уже ждет тебя. Добро пожаловать в семью NOLLY.
             </p>
         </div>
     </section>
@@ -71,7 +73,7 @@
         </div>
     </section>
 
-    <!-- АНОНСЫ (Скоро) -->
+    <!-- АНОНСЫ -->
     <section id="soon" class="section reveal">
         <h2 class="section-title-large">COMING <span class="pink">SOON</span></h2>
         <div class="soon-grid">
@@ -88,9 +90,10 @@
                 <div class="soon-info"><h3>666 DAY</h3><p>06.06.2026</p></div>
             </div>
         </div>
+        <p class="listing-update">СПИСОК БУДЕТ ПОПОЛНЯТЬСЯ...</p>
     </section>
 
-    <!-- МЕНЮ -->
+    <!-- РАСШИРЕННОЕ МЕНЮ -->
     <section id="menu" class="section menu-section reveal">
         <div class="menu-image-bg" style="background-image: url('img/menu-bg.jpg');"></div>
         <div class="glass-panel menu-glass">
@@ -129,15 +132,17 @@
 
     <!-- ГАЛЕРЕЯ -->
     <section id="gallery" class="section reveal">
-        <h2 class="section-title">GALLERY</h2>
-        <div class="gallery-row">
-            <img src="img/gallery1.jpg" alt="1">
-            <img src="img/gallery2.jpg" alt="2">
-            <img src="img/gallery3.jpg" alt="3">
+        <h2 class="section-title-large">INSIDE <span class="cyan">P1LS</span></h2>
+        <div class="premium-gallery-container">
+            <div class="gallery-track">
+                <div class="gallery-item"><img src="img/gallery1.jpg" alt="1"></div>
+                <div class="gallery-item"><img src="img/gallery2.jpg" alt="2"></div>
+                <div class="gallery-item"><img src="img/gallery3.jpg" alt="3"></div>
+            </div>
         </div>
     </section>
 
-    <!-- ОБНОВЛЕННЫЙ ФУТЕР -->
+    <!-- ФУТЕР -->
     <footer class="club-footer">
         <div class="footer-info">
             <div class="footer-location cyan">📍 МОСКВА, МАЛАЯ БРОННАЯ (ПАТРИАРШИЕ)</div>
@@ -145,7 +150,9 @@
                 <p>ВС — ЧТ: <span class="pink">CLOSED</span> | ПТ — СБ: <span class="cyan">22:00 — 06:00</span></p>
             </div>
             <div class="footer-rules">
-                <span class="tag">18+</span> <span class="tag">FC / DC</span>
+                <span class="tag">18+</span>
+                <span class="tag">FACE CONTROL</span>
+                <span class="tag">DRESS CODE</span>
             </div>
         </div>
     </footer>
@@ -194,10 +201,13 @@
                     <div class="form-grid">
                         <input type="text" id="name" placeholder="ВАШЕ ИМЯ" required>
                         <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <div class="form-grid" style="margin-top:15px;">
                         <select id="guest-count">
                             <option value="2">2 ПЕРСОНЫ</option>
                             <option value="4">4 ПЕРСОНЫ</option>
-                            <option value="VIP">VIP (10+)</option>
+                            <option value="6">6 ПЕРСОН</option>
+                            <option value="10">VIP (10+)</option>
                         </select>
                         <input type="date" id="reserve-date" value="2026-05-10">
                     </div>

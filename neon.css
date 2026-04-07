@@ -1,4 +1,4 @@
-/* neon.css - Ultimate Night Vibe & UI */
+/* neon.css */
 
 :root {
     --cyan: #00f3ff;
@@ -8,11 +8,7 @@
     --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-/* --- ТИПОГРАФИКА (Фикс шрифтов) --- */
-body, button, input, select, textarea {
-    font-family: ui-rounded, 'Quicksand', -apple-system, sans-serif !important;
-}
-
+/* --- СВЕЧЕНИЕ ТЕКСТА --- */
 .logo {
     color: var(--cyan);
     font-weight: 900;
@@ -24,6 +20,12 @@ body, button, input, select, textarea {
 .hero-unified-text {
     color: var(--white);
     text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(188, 0, 255, 0.4);
+    animation: glowPulse 4s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; }
 }
 
 .cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
@@ -106,6 +108,18 @@ body, button, input, select, textarea {
     width: 100%;
 }
 
+.balls-btn {
+    background: transparent;
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    margin-top: 20px;
+    box-shadow: 0 0 10px var(--pink);
+    cursor: pointer;
+}
+
 /* --- VIP КАРТА (BLUEPRINT V2) --- */
 .real-club-map {
     background: rgba(0, 243, 255, 0.02);
@@ -163,7 +177,6 @@ body, button, input, select, textarea {
     border: 2px solid var(--pink);
     color: var(--pink);
     opacity: 0.25;
-    cursor: not-allowed;
 }
 
 .seats {
@@ -202,6 +215,8 @@ body, button, input, select, textarea {
     border-radius: 20px;
     z-index: 3000;
     box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    display: flex;
+    flex-direction: column;
 }
 
 .bot-header {
@@ -220,6 +235,7 @@ body, button, input, select, textarea {
     border-left: 3px solid var(--cyan);
     margin-bottom: 10px;
     font-size: 0.85rem;
+    color: #fff;
 }
 
 .bot-msg-out {
@@ -230,6 +246,15 @@ body, button, input, select, textarea {
     text-align: right;
     margin-bottom: 10px;
     font-size: 0.85rem;
+    color: #fff;
+}
+
+.bot-footer {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bot-footer button {
@@ -240,12 +265,26 @@ body, button, input, select, textarea {
     border-radius: 8px;
     font-size: 0.7rem;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .bot-footer button:hover {
     border-color: var(--cyan);
     color: var(--cyan);
+}
+
+.bot-trigger {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--cyan);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 3001;
+    box-shadow: 0 0 20px var(--cyan);
 }
 
 /* --- СКРОЛЛБАР --- */
