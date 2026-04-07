@@ -1,162 +1,176 @@
-/* --- КЛУБНАЯ ПАЛИТРА --- */
+/* --- КРУГЛЫЙ И ЧЕТКИЙ НЕОН --- */
 :root {
     --n-blue: #00f3ff;
     --n-pink: #ff00ff;
-    --n-purple: #9d00ff;
-    --n-magenta: #ff0055;
+    --n-purple: #bc00ff;
     --n-green: #00ff88;
+    --n-yellow: #fefe00;
+    --n-white: #ffffff;
 }
 
-/* --- ТИПОГРАФИКА И СВЕЧЕНИЕ --- */
+/* Принудительная округлость для всех шрифтов */
+body, button, input, select, textarea {
+    font-family: 'Comfortaa', cursive !important;
+}
+
+/* Логотип */
 .logo {
     color: var(--n-blue);
-    text-shadow: 0 0 10px var(--n-blue), 0 0 20px var(--n-purple);
-    letter-spacing: 3px;
-    font-weight: 900;
-}
-
-.hero-title {
-    color: #fff;
-    text-transform: uppercase;
-    /* Тройной слой неона для глубины */
-    text-shadow: 
-        3px 3px 0px var(--n-purple),
-        -3px -3px 0px var(--n-pink),
-        0 0 40px var(--n-blue);
-}
-
-.glow {
-    color: var(--n-blue);
-    filter: drop-shadow(0 0 15px var(--n-blue));
-}
-
-.hero-tagline {
-    color: #fff;
     font-weight: 700;
-    letter-spacing: 5px;
-    text-shadow: 0 0 10px var(--n-pink);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--n-blue), 0 0 20px var(--n-purple);
+    letter-spacing: 2px;
+}
+
+/* Главный заголовок с тройным неоном */
+.main-title {
+    color: #fff;
+    text-shadow: 
+        0 0 15px var(--n-blue),
+        0 0 30px var(--n-purple),
+        0 0 45px var(--n-pink);
+    animation: flicker 4s infinite;
+}
+
+.top-tag { color: var(--n-green); text-shadow: 0 0 10px var(--n-green); }
+.bottom-tag { color: var(--n-yellow); text-shadow: 0 0 10px var(--n-yellow); }
+
+.neon-h {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 20px var(--n-pink);
     text-transform: uppercase;
-    opacity: 0.8;
 }
 
-.badge {
-    color: var(--n-green);
-    border: 2px solid var(--n-green);
-    padding: 6px 15px;
-    border-radius: 50px;
-    box-shadow: 0 0 15px var(--n-green), inset 0 0 5px var(--n-green);
-    display: inline-block;
-}
-
-/* --- КНОПКИ --- */
-.vip-btn {
-    border: 2px solid var(--n-purple) !important;
-    color: var(--n-purple) !important;
-    padding: 10px 20px;
-    box-shadow: 0 0 10px var(--n-purple);
-    border-radius: 5px;
-}
-
-.vip-btn:hover {
-    background: var(--n-purple);
-    color: #000 !important;
-    box-shadow: 0 0 30px var(--n-purple);
-}
-
-.reserve-btn, .submit-btn {
+/* Кнопки */
+.booking-btn, .balls-btn {
     background: transparent;
-    border: 2px solid var(--n-blue);
+    border: 3px solid var(--n-blue);
     color: var(--n-blue);
-    padding: 10px 25px;
-    border-radius: 5px;
-    font-weight: 900;
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-    transition: 0.3s;
+    padding: 12px 35px;
+    border-radius: 50px; /* Идеальный круг */
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px var(--n-blue);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
 }
 
-.reserve-btn:hover, .submit-btn:hover {
+.booking-btn:hover {
     background: var(--n-blue);
     color: #000;
     box-shadow: 0 0 40px var(--n-blue);
     transform: scale(1.05);
 }
 
-/* --- СЕКЦИИ И КАРТОЧКИ --- */
-.title {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.pink { color: var(--n-pink); text-shadow: 0 0 15px var(--n-pink); }
-.blue { color: var(--n-blue); text-shadow: 0 0 15px var(--n-blue); }
-
-.artist-card {
-    border: 1px solid rgba(157, 0, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    transition: 0.4s;
-}
-
-.artist-card:hover {
+.balls-btn {
     border-color: var(--n-pink);
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-    transform: translateY(-10px);
+    color: var(--n-pink);
+    box-shadow: 0 0 15px var(--n-pink);
 }
 
-.artist-card h3 {
+.balls-btn:hover {
+    background: var(--n-pink);
+    color: #fff;
+    box-shadow: 0 0 40px var(--n-pink);
+}
+
+.vip-trigger {
+    color: var(--n-yellow) !important;
+    text-shadow: 0 0 8px var(--n-yellow);
+}
+
+/* Меню */
+.menu-sub {
     color: var(--n-blue);
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-/* --- VIP СХЕМА --- */
-.vip-box {
-    border: 2px solid var(--n-purple);
-    box-shadow: 0 0 50px var(--n-purple);
-}
-
-.stage-label {
-    border-bottom: 2px dashed var(--n-blue);
-    color: var(--n-blue);
+    text-shadow: 0 0 10px var(--n-blue);
+    border-bottom: 2px solid var(--n-blue);
     padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
 }
 
-.t.free:hover {
+.m-item:hover {
+    color: var(--n-green);
+    text-shadow: 0 0 10px var(--n-green);
+    border-bottom-color: var(--n-green);
+}
+
+/* Карта клуба */
+.modal-box {
+    border: 3px solid var(--n-purple);
+    box-shadow: 0 0 60px var(--n-purple);
+}
+
+.blue-n { color: var(--n-blue); text-shadow: 0 0 10px var(--n-blue); }
+.pink-n { color: var(--n-pink); text-shadow: 0 0 10px var(--n-pink); }
+
+.tbl.free {
+    border: 3px solid var(--n-green);
+    color: var(--n-green);
+    box-shadow: 0 0 10px var(--n-green);
+}
+
+.tbl.free:hover {
     background: var(--n-green);
     color: #000;
-    box-shadow: 0 0 20px var(--n-green);
+    box-shadow: 0 0 30px var(--n-green);
 }
 
-.legend .f { background: var(--n-green); width: 10px; height: 10px; display: inline-block; border-radius: 50%; }
-.legend .o { background: var(--n-magenta); width: 10px; height: 10px; display: inline-block; border-radius: 50%; }
-
-/* --- ИИ БОТ --- */
-.ai-bot {
-    border: 1px solid var(--n-blue);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+.tbl.occupied {
+    border: 3px solid var(--n-pink);
+    color: var(--n-pink);
+    opacity: 0.3;
 }
 
-.bot-header {
+.map-stage { border: 2px dashed var(--n-blue) !important; color: var(--n-blue); text-shadow: 0 0 10px var(--n-blue); }
+.bar-counter { border: 2px solid var(--n-yellow) !important; color: var(--n-yellow); text-shadow: 0 0 10px var(--n-yellow); }
+
+/* ИИ Бот */
+.bot-box {
+    border: 2px solid var(--n-blue);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+}
+
+.bot-head {
     background: var(--n-blue);
     color: #000;
     text-transform: uppercase;
 }
 
-.options button:hover {
-    background: var(--n-pink) !important;
+#bot-opts button {
+    border: 1px solid var(--n-purple);
+    border-radius: 20px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+
+#bot-opts button:hover {
+    background: var(--n-purple);
+    box-shadow: 0 0 15px var(--n-purple);
     color: #fff;
-    box-shadow: 0 0 15px var(--n-pink);
 }
 
-/* --- АНИМАЦИИ --- */
-@keyframes neonPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+/* Формы */
+input, select {
+    border: 2px solid #333;
+    border-radius: 15px;
+    transition: 0.3s;
 }
 
-.hero-title {
-    animation: neonPulse 3s ease-in-out infinite;
+input:focus {
+    border-color: var(--n-blue);
+    box-shadow: 0 0 15px var(--n-blue);
+}
+
+/* Анимация мерцания (Эффект неоновой вывески) */
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 15px var(--n-blue), 0 0 30px var(--n-purple), 0 0 45px var(--n-pink);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.8;
+    }
 }
