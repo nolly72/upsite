@@ -1,91 +1,113 @@
 /**
- * NOLLY P1LS - Official Script
- * Магия фонарика + Анимация появления
+ * NOLLY P1LS - Official Logic
+ * Полный функционал: Бронирование, Новости, Плавный скролл
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const spotlight = document.querySelector('.spotlight');
-    const cards = document.querySelectorAll('.card');
+    // 1. ПОИСК ГЛАВНЫХ ЭЛЕМЕНТОВ
+    const modal = document.getElementById('bookingModal');
+    const bookingForm = document.getElementById('bookingForm');
+    const phoneInput = document.getElementById('phone');
 
-    // 1. Управление фонариком (Spotlight)
-    // Используем переменную, чтобы обновлять координаты только если мышь реально двигалась
-    let mouseX = 0;
-    let mouseY = 0;
+    // 2. ПЛАВНАЯ НАВИГАЦИЯ К СЕКЦИЯМ
+    // Срабатывает при клике на кнопку "НОВОСТИ"
+    window.scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 80; // Отступ под шапку сайта
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
 
-    const updateSpotlight = (e) => {
-        // Проверяем, не мобильное ли это устройство (на тачскринах фонарик мешает)
-        if (window.innerWidth > 1024) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            // Используем requestAnimationFrame для максимальной плавности (60 FPS)
-            requestAnimationFrame(() => {
-                document.documentElement.style.setProperty('--x', `${mouseX}px`);
-                document.documentElement.style.setProperty('--y', `${mouseY}px`);
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
         }
     };
 
-    window.addEventListener('mousemove', updateSpotlight);
+    // 3. ФУНКЦИИ МОДАЛЬНОГО ОКНА (ОТКРЫТЬ / ЗАКРЫТЬ)
+    window.openBooking = () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Запрещаем скролл страницы
 
-    // 2. Анимация появления карточек при скролле (Scroll Reveal)
-    // Это создает эффект "дорогого" сайта, когда контент плавно выплывает
-    const revealOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1 // Сработает, когда 10% карточки покажется на экране
-    });
-
-    cards.forEach(card => {
-        // Начальное состояние для анимации (можно также прописать в CSS)
-        card.style.opacity = "0";
-        card.style.transform = "translateY(50px)";
-        card.style.transition = "all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)";
+        // Эффект плавного появления контента
+        const content = modal.querySelector('.modal-content');
+        content.style.opacity = '0';
+        content.style.transform = 'scale(0.8)';
         
-        revealOnScroll.observe(card);
+        setTimeout(() => {
+            content.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            content.style.opacity = '1';
+            content.style.transform = 'scale(1)';
+        }, 10);
+    };
+
+    window.closeBooking = () => {
+        const content = modal.querySelector('.modal-content');
+        content.style.opacity = '0';
+        content.style.transform = 'scale(0.8)';
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Возвращаем скролл страницы
+        }, 300);
+    };
+
+    // Закрытие при клике мимо окна
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            closeBooking();
+        }
+    };
+
+    // 4. МАСКА ДЛЯ ВВОДА ТЕЛЕФОНА
+    // Автоматически добавляет +7, скобки и дефисы
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, ''); // Только цифры
+        let formatted = "";
+
+        if (value.length > 0) {
+            formatted = "+7 ";
+            if (value.length > 1) {
+                formatted += "(" + value.substring(1, 4);
+            }
+            if (value.length > 4) {
+                formatted += ") " + value.substring(4, 7);
+            }
+            if (value.length > 7) {
+                formatted += "-" + value.substring(7, 9);
+            }
+            if (value.length > 9) {
+                formatted += "-" + value.substring(9, 11);
+            }
+        }
+        e.target.value = formatted;
     });
 
-    // 3. Параллакс эффект для фото внутри карточек
-    // Когда ведешь мышкой по карточке, фото внутри слегка смещается
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const img = card.querySelector('.bg-img');
-            if (img && window.innerWidth > 1024) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // положение мыши внутри карточки
-                const y = e.clientY - rect.top;
+    // 5. ОБРАБОТКА ФОРМЫ БРОНИРОВАНИЯ
+    bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const submitBtn = bookingForm.querySelector('.submit-btn');
+        const originalText = submitBtn.innerText;
+        
+        // Визуальная имитация отправки
+        submitBtn.innerText = 'ОТПРАВКА...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const moveX = (x - centerX) / 25;
-                const moveY = (y - centerY) / 25;
-
-                img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
-            }
-        });
-
-        // Возвращаем фото в центр, когда мышь уходит
-        card.addEventListener('mouseleave', () => {
-            const img = card.querySelector('.bg-img');
-            if (img) {
-                img.style.transform = `scale(1) translate(0, 0)`;
-            }
-        });
+        setTimeout(() => {
+            // Успешный результат
+            alert(`SOSA! Заявка в NOLLY P1LS принята.\nНаш менеджер наберет вас на номер ${phoneInput.value}.\nУвидимся ночью!`);
+            
+            // Сброс всех полей
+            bookingForm.reset();
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            closeBooking();
+        }, 1500);
     });
 });
-
-// 4. Дополнительный CSS класс для анимации появления (добавляется через JS)
-// Ты можешь добавить это в style.css, но для надежности оставим логику тут
-const style = document.createElement('style');
-style.innerHTML = `
-    .card.visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`;
-document.head.appendChild(style);
