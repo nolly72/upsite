@@ -94,66 +94,72 @@
     </section>
 
 <!-- РАСШИРЕННОЕ МЕНЮ -->
-<section id="menu" class="section menu-section reveal">
-    <!-- Слой с фоновым фото -->
+<section id="menu" class="section menu-section reveal" style="position: relative; padding: 60px 15px; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    
+    <!-- Фоновое фото -->
     <div class="menu-image-bg-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-        <img src="img/menu-bg.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4);">
+        <img src="img/menu-bg.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35);">
     </div>
 
-    <div class="glass-panel menu-glass">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">KITCHEN & BAR</h2>
+    <!-- Стеклянная панель -->
+    <div class="glass-panel menu-glass" style="position: relative; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px; padding: 40px; max-width: 1100px; width: 100%; box-sizing: border-box;">
         
-        <div class="menu-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <h2 class="section-title" style="text-align: center; color: #fff; font-size: 2rem; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase;">KITCHEN & BAR</h2>
+        
+        <!-- Контейнер сетки -->
+        <div class="menu-grid-main" style="display: flex; flex-wrap: wrap; gap: 40px;">
             
             <!-- ЛЕВАЯ СТОРОНА: КУХНЯ -->
-            <div class="menu-category">
-                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px;">КУХНЯ</h4>
-                <div class="sub-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div class="menu-sub-col">
-                        <p>WAGYU STEAK <span>8900</span></p>
-                        <p>BLACK CAVIAR <span>15000</span></p>
-                        <p>LOBSTER ROLL <span>5400</span></p>
-                        <p>TRUFFLE PASTA <span>3200</span></p>
-                        <p>OYSTERS X12 <span>8600</span></p>
+            <div class="menu-category" style="flex: 1; min-width: 300px;">
+                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px; font-size: 1.3rem;">КУХНЯ</h4>
+                <div class="sub-grid" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="flex: 1; min-width: 140px;">
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">WAGYU <span>8900</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">CAVIAR <span>15000</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">LOBSTER <span>5400</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">PASTA <span>3200</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">OYSTERS <span>8600</span></p>
                     </div>
-                    <div class="menu-sub-col">
-                        <p>TARTAR BEEF <span>2100</span></p>
-                        <p>OCTOPUS <span>4500</span></p>
-                        <p>KING PRAWNS <span>3900</span></p>
-                        <p>DUCK CONFIT <span>2800</span></p>
-                        <p>P1LS BURGER <span>2400</span></p>
+                    <div style="flex: 1; min-width: 140px;">
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">TARTAR <span>2100</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">OCTOPUS <span>4500</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">PRAWNS <span>3900</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">CONFIT <span>2800</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">BURGER <span>2400</span></p>
                     </div>
                 </div>
             </div>
 
             <!-- ПРАВАЯ СТОРОНА: БАР -->
-            <div class="menu-category">
-                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px;">БАР</h4>
-                <div class="sub-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div class="menu-sub-col">
-                        <p>DOM PERIGNON <span>85000</span></p>
-                        <p>ARMAND DE B. <span>120000</span></p>
-                        <p>VICE COCKTAIL <span>2500</span></p>
-                        <p>NEON GIN <span>1800</span></p>
-                        <p>CRYSTAL SHOT <span>1200</span></p>
+            <div class="menu-category" style="flex: 1; min-width: 300px;">
+                <h4 style="color: #00ffff; border-bottom: 2px solid #00ffff; display: inline-block; margin-bottom: 20px; font-size: 1.3rem;">БАР</h4>
+                <div class="sub-grid" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="flex: 1; min-width: 140px;">
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">DOM PER. <span>85000</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">ARMAND <span>120000</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">VICE <span>2500</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">NEON GIN <span>1800</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">CRYSTAL <span>1200</span></p>
                     </div>
-                    <div class="menu-sub-col">
-                        <p>GOLDEN MARG. <span>3000</span></p>
-                        <p>WHISKY 21Y <span>5500</span></p>
-                        <p>TEQUILA ANEJO <span>3500</span></p>
-                        <p>VODKA LUX <span>1100</span></p>
-                        <p>P1LS PUNCH <span>2200</span></p>
+                    <div style="flex: 1; min-width: 140px;">
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">GOLDEN <span>3000</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">WHISKY <span>5500</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">TEQUILA <span>3500</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">VODKA <span>1100</span></p>
+                        <p style="display: flex; justify-content: space-between; color: #fff; margin-bottom: 12px; border-bottom: 1px dotted rgba(255,255,255,0.2);">PUNCH <span>2200</span></p>
                     </div>
                 </div>
             </div>
 
         </div>
 
+        <!-- Кнопка -->
         <div style="text-align: center; margin-top: 40px;">
-            <button class="balls-btn">BALLS <3</button>
+            <button class="balls-btn" style="background: transparent; border: 1px solid #fff; color: #fff; padding: 12px 35px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;">BALLS <3</button>
         </div>
     </div>
 </section>
+
 
 
 <!-- ГАЛЕРЕЯ -->
