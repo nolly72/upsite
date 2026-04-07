@@ -1,176 +1,177 @@
-/* --- КРУГЛЫЙ И ЧЕТКИЙ НЕОН --- */
+/* --- VICE CITY PALETTE --- */
 :root {
-    --n-blue: #00f3ff;
-    --n-pink: #ff00ff;
-    --n-purple: #bc00ff;
-    --n-green: #00ff88;
-    --n-yellow: #fefe00;
-    --n-white: #ffffff;
+    --cyan: #00f3ff;
+    --pink: #ff00ff;
+    --purple: #bc00ff;
+    --deep-blue: #05001a;
+    --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* Принудительная округлость для всех шрифтов */
-body, button, input, select, textarea {
-    font-family: 'Comfortaa', cursive !important;
-}
-
-/* Логотип */
+/* --- ТИПОГРАФИКА --- */
 .logo {
-    color: var(--n-blue);
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px var(--n-blue), 0 0 20px var(--n-purple);
-    letter-spacing: 2px;
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--purple);
 }
 
-/* Главный заголовок с тройным неоном */
-.main-title {
+.hero-main-title {
     color: #fff;
+    text-transform: uppercase;
+    /* Четкий премиальный неон */
     text-shadow: 
-        0 0 15px var(--n-blue),
-        0 0 30px var(--n-purple),
-        0 0 45px var(--n-pink);
-    animation: flicker 4s infinite;
+        0 0 20px var(--cyan),
+        0 0 40px var(--purple);
 }
 
-.top-tag { color: var(--n-green); text-shadow: 0 0 10px var(--n-green); }
-.bottom-tag { color: var(--n-yellow); text-shadow: 0 0 10px var(--n-yellow); }
+.hero-top-text { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+.hero-bottom-text { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
 
-.neon-h {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 0 0 20px var(--n-pink);
-    text-transform: uppercase;
+.cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
+.pink { color: var(--pink); text-shadow: 0 0 15px var(--pink); }
+
+/* --- КНОПКИ (VICE STYLE) --- */
+.btn-glass {
+    background: var(--glass);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    color: var(--cyan);
+    padding: 10px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
 }
 
-/* Кнопки */
-.booking-btn, .balls-btn {
-    background: transparent;
-    border: 3px solid var(--n-blue);
-    color: var(--n-blue);
-    padding: 12px 35px;
-    border-radius: 50px; /* Идеальный круг */
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 0 0 15px var(--n-blue);
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.btn-glass:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 20px var(--cyan);
+    transform: translateY(-2px);
+}
+
+.btn-glow-cyan {
+    background: var(--cyan);
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: 900;
+    box-shadow: 0 0 20px var(--cyan);
+    transition: 0.4s;
     cursor: pointer;
 }
 
-.booking-btn:hover {
-    background: var(--n-blue);
-    color: #000;
-    box-shadow: 0 0 40px var(--n-blue);
+.btn-glow-cyan:hover {
+    box-shadow: 0 0 40px var(--cyan);
     transform: scale(1.05);
 }
 
+.btn-glow-pink {
+    background: var(--pink);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-weight: 900;
+    width: 100%;
+    box-shadow: 0 0 20px var(--pink);
+    cursor: pointer;
+}
+
 .balls-btn {
-    border-color: var(--n-pink);
-    color: var(--n-pink);
-    box-shadow: 0 0 15px var(--n-pink);
+    background: transparent;
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 900;
+    margin-top: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--pink);
+    transition: 0.4s;
 }
 
 .balls-btn:hover {
-    background: var(--n-pink);
+    background: var(--pink);
     color: #fff;
-    box-shadow: 0 0 40px var(--n-pink);
+    box-shadow: 0 0 40px var(--pink);
 }
 
-.vip-trigger {
-    color: var(--n-yellow) !important;
-    text-shadow: 0 0 8px var(--n-yellow);
+/* --- КАРТОЧКИ --- */
+.artist-card, .soon-card {
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.5s;
 }
 
-/* Меню */
-.menu-sub {
-    color: var(--n-blue);
-    text-shadow: 0 0 10px var(--n-blue);
-    border-bottom: 2px solid var(--n-blue);
-    padding-bottom: 10px;
-    display: inline-block;
-    width: 100%;
+.artist-card:hover, .soon-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
 }
 
-.m-item:hover {
-    color: var(--n-green);
-    text-shadow: 0 0 10px var(--n-green);
-    border-bottom-color: var(--n-green);
-}
-
-/* Карта клуба */
-.modal-box {
-    border: 3px solid var(--n-purple);
-    box-shadow: 0 0 60px var(--n-purple);
-}
-
-.blue-n { color: var(--n-blue); text-shadow: 0 0 10px var(--n-blue); }
-.pink-n { color: var(--n-pink); text-shadow: 0 0 10px var(--n-pink); }
-
-.tbl.free {
-    border: 3px solid var(--n-green);
-    color: var(--n-green);
-    box-shadow: 0 0 10px var(--n-green);
-}
-
-.tbl.free:hover {
-    background: var(--n-green);
-    color: #000;
-    box-shadow: 0 0 30px var(--n-green);
-}
-
-.tbl.occupied {
-    border: 3px solid var(--n-pink);
-    color: var(--n-pink);
-    opacity: 0.3;
-}
-
-.map-stage { border: 2px dashed var(--n-blue) !important; color: var(--n-blue); text-shadow: 0 0 10px var(--n-blue); }
-.bar-counter { border: 2px solid var(--n-yellow) !important; color: var(--n-yellow); text-shadow: 0 0 10px var(--n-yellow); }
-
-/* ИИ Бот */
-.bot-box {
-    border: 2px solid var(--n-blue);
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
-}
-
-.bot-head {
-    background: var(--n-blue);
-    color: #000;
+.artist-name, .soon-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-#bot-opts button {
-    border: 1px solid var(--n-purple);
-    border-radius: 20px;
-    margin-bottom: 8px;
+.soon-info p { color: var(--pink); font-weight: 800; }
+
+.promo-666 { border: 2px solid var(--pink) !important; }
+.promo-666 .soon-info h3 { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
+
+/* --- VIP КАРТА (BLUEPRINT) --- */
+.club-blueprint { border: 1px solid var(--cyan); }
+.t-item.free {
+    border: 2px solid var(--cyan);
+    color: var(--cyan);
     transition: 0.3s;
 }
 
-#bot-opts button:hover {
-    background: var(--n-purple);
-    box-shadow: 0 0 15px var(--n-purple);
+.t-item.free:hover {
+    background: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 25px var(--cyan);
+}
+
+.t-item.occupied {
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    opacity: 0.4;
+}
+
+.bp-bar { border: 1px solid var(--cyan); color: var(--cyan); }
+
+/* --- AI ASSISTANT --- */
+.ai-assistant-vice { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.2); }
+#bot-options button {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0, 243, 255, 0.3);
     color: #fff;
-}
-
-/* Формы */
-input, select {
-    border: 2px solid #333;
-    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-input:focus {
-    border-color: var(--n-blue);
-    box-shadow: 0 0 15px var(--n-blue);
+#bot-options button:hover {
+    background: var(--cyan);
+    color: #000;
 }
 
-/* Анимация мерцания (Эффект неоновой вывески) */
-@keyframes flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        text-shadow: 0 0 15px var(--n-blue), 0 0 30px var(--n-purple), 0 0 45px var(--n-pink);
-    }
-    20%, 24%, 55% {
-        text-shadow: none;
-        opacity: 0.8;
-    }
+/* --- ФОРМЫ --- */
+input {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 15px;
+    color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
 }
+
+input:focus { border-color: var(--cyan) !important; box-shadow: 0 0 10px var(--cyan); }
+
+/* --- СКРОЛЛБАР --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #05001a; }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }

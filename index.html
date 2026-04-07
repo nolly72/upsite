@@ -3,153 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY P1LS | NEXT-GEN CLUB</title>
-    <!-- Самый круглый и приятный шрифт Comfortaa -->
+    <title>NOLLY P1LS | VICE CITY PREMIERE</title>
+    
+    <!-- Шрифты -->
     <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Стили -->
     <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="neon.css">
 </head>
 <body>
 
-    <!-- Быстрый неоновый фон -->
-    <div class="fast-bg"></div>
+    <!-- Анимированный фон (Miami Colors) -->
+    <div class="vice-gradient-bg"></div>
 
-    <!-- Навигация -->
     <nav>
         <div class="logo">NOLLY P1LS</div>
         <div class="nav-links">
-            <button onclick="scrollToSection('about')">О НАС</button>
-            <button onclick="scrollToSection('news')">FEED</button>
-            <button onclick="scrollToSection('menu')">МЕНЮ</button>
-            <button onclick="scrollToSection('gallery')">ГАЛЕРЕЯ</button>
-            <button class="vip-trigger" onclick="openVipMap()">VIP КАРТА</button>
-            <button class="booking-btn" onclick="openBooking()">RESERVE</button>
+            <button onclick="scrollToSection('about')">ABOUT</button>
+            <button onclick="scrollToSection('lineup')">LINEUP</button>
+            <button onclick="scrollToSection('soon')">SOON</button>
+            <button onclick="scrollToSection('menu')">MENU</button>
+            <button class="btn-glass vip-trigger" onclick="openVipMap()">VIP MAP</button>
+            <button class="btn-glow-cyan" onclick="openBooking()">BOOK</button>
         </div>
     </nav>
 
-    <!-- Главный экран -->
-    <header class="hero">
-        <div class="hero-box">
-            <div class="top-tag">MOSCOW NIGHTS</div>
-            <h1 class="main-title">NOLLY P1LS</h1>
-            <div class="bottom-tag">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</div>
+    <!-- ГЛАВНЫЙ ЭКРАН С ФОНОМ -->
+    <header class="hero" id="home">
+        <div class="hero-image-bg" style="background-image: url('img/hero-bg.jpg');"></div>
+        <div class="hero-content">
+            <h2 class="hero-top-text">MOSCOW NIGHTS</h2>
+            <h1 class="hero-main-title">NOLLY P1LS</h1>
+            <h3 class="hero-bottom-text">ТВОЙ БИЛЕТ В НОВУЮ РЕАЛЬНОСТЬ</h3>
         </div>
     </header>
 
-    <!-- Секция О НАС -->
-    <section id="about" class="page-section">
-        <div class="wrap">
-            <h2 class="neon-h">О НАС</h2>
-            <p class="round-text">NOLLY P1LS — это футуристичное пространство в самом сердце Москвы. Мы создали место, где высокие технологии встречаются с первобытным драйвом. Лучший звук в СНГ, авторская кухня и сообщество людей, которые знают цену моменту.</p>
+    <!-- О НАС (Glassmorphism) -->
+    <section id="about" class="section reveal">
+        <div class="glass-panel">
+            <h2 class="section-title">VICE EXPERIENCE</h2>
+            <p class="section-desc">Эстетика Майами 80-х в современном прочтении. Глубокий звук, премиальный сервис и атмосфера, которой нет равных в Москве.</p>
         </div>
     </section>
 
-    <!-- Секция АРТИСТЫ -->
-    <section id="news" class="page-section">
-        <div class="wrap">
-            <h2 class="neon-h">LINE UP</h2>
-            <div class="bento-grid">
-                <div class="bento-item"><img src="img/buda.jpg" alt="OG Buda"><h3>OG BUDA</h3></div>
-                <div class="bento-item"><img src="img/mayot.jpg" alt="Mayot"><h3>MAYOT</h3></div>
-                <div class="bento-item"><img src="img/platina.jpg" alt="Platina"><h3>ПЛАТИНА</h3></div>
-            </div>
+    <!-- ТЕКУЩИЙ LINEUP -->
+    <section id="lineup" class="section reveal">
+        <h2 class="section-title-large">NOW <span class="cyan">PLAYING</span></h2>
+        <div class="artist-grid">
+            <div class="artist-card"><img src="img/buda.jpg" alt="Buda"> <div class="artist-name">OG BUDA</div></div>
+            <div class="artist-card"><img src="img/mayot.jpg" alt="Mayot"> <div class="artist-name">MAYOT</div></div>
+            <div class="artist-card"><img src="img/platina.jpg" alt="Platina"> <div class="artist-name">ПЛАТИНА</div></div>
         </div>
     </section>
 
-    <!-- РАСШИРЕННОЕ МЕНЮ (10 БЛЮД + 10 НАПИТКОВ) -->
-    <section id="menu" class="page-section">
-        <div class="wrap">
-            <h2 class="neon-h">KITCHEN & BAR</h2>
-            
-            <div class="menu-container">
-                <!-- Кухня -->
-                <div class="menu-column">
-                    <h3 class="menu-sub">FOOD</h3>
-                    <div class="m-item"><span>WAGYU STEAK</span> <span>8900₽</span></div>
-                    <div class="m-item"><span>BLACK CAVIAR SET</span> <span>15000₽</span></div>
-                    <div class="m-item"><span>OYSTERS (6 PCS)</span> <span>4800₽</span></div>
-                    <div class="m-item"><span>TRUFFLE PASTA</span> <span>3200₽</span></div>
-                    <div class="m-item"><span>LOBSTER ROLL</span> <span>5400₽</span></div>
-                    <div class="m-item"><span>TARTAR BEEF</span> <span>1800₽</span></div>
-                    <div class="m-item"><span>OCTOPUS GRILLED</span> <span>4200₽</span></div>
-                    <div class="m-item"><span>KING PRAWNS</span> <span>3900₽</span></div>
-                    <div class="m-item)</span> <span>DUCK CONFIT</span> <span>2900₽</span></div>
-                    <div class="m-item"><span>P1LS BURGER</span> <span>2100₽</span></div>
-                </div>
+    <!-- COMING SOON (НОВЫЙ РАЗДЕЛ) -->
+    <section id="soon" class="section reveal">
+        <h2 class="section-title-large">COMING <span class="pink">SOON</span></h2>
+        <div class="soon-grid">
+            <div class="soon-card">
+                <img src="img/feduk.jpg" alt="Feduk">
+                <div class="soon-info"><h3>FEDUK</h3><p>15.05.2026</p></div>
+            </div>
+            <div class="soon-card">
+                <img src="img/saluki.jpg" alt="Saluki">
+                <div class="soon-info"><h3>SALUKI</h3><p>22.05.2026</p></div>
+            </div>
+            <div class="soon-card promo-666">
+                <img src="img/day666.jpg" alt="666">
+                <div class="soon-info"><h3>666 DAY</h3><p>06.06.2026</p></div>
+            </div>
+        </div>
+        <p class="listing-update">СПИСОК БУДЕТ ПОПОЛНЯТЬСЯ...</p>
+    </section>
 
-                <!-- Бар -->
-                <div class="menu-column">
-                    <h3 class="menu-sub">DRINKS</h3>
-                    <div class="m-item"><span>GOLDEN COCKTAIL</span> <span>2500₽</span></div>
-                    <div class="m-item"><span>P1LS CRYSTAL SHOT</span> <span>1200₽</span></div>
-                    <div class="m-item"><span>DOM PERIGNON</span> <span>85000₽</span></div>
-                    <div class="m-item"><span>NEON GIN TONIC</span> <span>1800₽</span></div>
-                    <div class="m-item"><span>WHISKY 18Y</span> <span>4500₽</span></div>
-                    <div class="m-item"><span>TEQUILA ANEJO</span> <span>3200₽</span></div>
-                    <div class="m-item"><span>PASSION MARTINI</span> <span>1900₽</span></div>
-                    <div class="m-item"><span>BLUE LAGOON 2.0</span> <span>1700₽</span></div>
-                    <div class="m-item"><span>VODKA PREMIUM</span> <span>1100₽</span></div>
-                    <div class="m-item"><span>NOLLY PUNCH</span> <span>2200₽</span></div>
+    <!-- МЕНЮ С ФОНОМ -->
+    <section id="menu" class="section menu-section reveal">
+        <div class="menu-image-bg" style="background-image: url('img/menu-bg.jpg');"></div>
+        <div class="glass-panel menu-glass">
+            <h2 class="section-title">KITCHEN & BAR</h2>
+            <div class="menu-columns">
+                <div class="menu-col">
+                    <h4>FOOD</h4>
+                    <p>WAGYU STEAK <span>8900</span></p>
+                    <p>LOBSTER ROLL <span>5400</span></p>
+                    <p>TRUFFLE PASTA <span>3200</span></p>
+                    <p>BLACK CAVIAR <span>15000</span></p>
+                    <p>OYSTERS X6 <span>4800</span></p>
+                </div>
+                <div class="menu-col">
+                    <h4>DRINKS</h4>
+                    <p>DOM PERIGNON <span>85000</span></p>
+                    <p>VICE COCKTAIL <span>2500</span></p>
+                    <p>NEON GIN <span>1800</span></p>
+                    <p>CRYSTAL SHOT <span>1200</span></p>
+                    <p>GOLDEN MARGARITA <span>3000</span></p>
                 </div>
             </div>
-            
             <button class="balls-btn">BALLS <3</button>
         </div>
     </section>
 
     <!-- ГАЛЕРЕЯ -->
-    <section id="gallery" class="page-section">
-        <div class="wrap">
-            <h2 class="neon-h">GALLERY</h2>
-            <p class="round-text">Фотоотчеты с прошлых вечеринок доступны в нашем Telegram канале.</p>
-            <button class="booking-btn" style="margin-top: 20px;">ПЕРЕЙТИ В TG</button>
+    <section id="gallery" class="section reveal">
+        <h2 class="section-title">GALLERY</h2>
+        <div class="gallery-row">
+            <img src="img/gallery1.jpg" alt="1">
+            <img src="img/gallery2.jpg" alt="2">
+            <img src="img/gallery3.jpg" alt="3">
         </div>
     </section>
 
-    <!-- VIP КАРТА (Детальная) -->
+    <!-- VIP КАРТА (Blueprint) -->
     <div id="vipModal" class="modal">
-        <div class="modal-box wide-map">
-            <span class="close" onclick="closeVipMap()">&times;</span>
-            <h2 class="blue-n">CLUB BLUEPRINT</h2>
-            <div class="pro-map">
-                <div class="map-stage">STAGE / ARTISTS</div>
-                <div class="map-middle">
-                    <div class="wc-zone">WC AREA</div>
-                    <div class="tables-area">
-                        <div class="tbl occupied"><span>1</span></div>
-                        <div class="tbl free"><span>2</span></div>
-                        <div class="tbl free"><span>3</span></div>
-                        <div class="tbl occupied"><span>4</span></div>
-                        <div class="tbl free"><span>5</span></div>
-                        <div class="tbl free"><span>6</span></div>
+        <div class="modal-box glass-modal wide">
+            <span class="close-btn" onclick="closeVipMap()">&times;</span>
+            <h2 class="modal-title">CLUB BLUEPRINT</h2>
+            <div class="club-blueprint">
+                <div class="bp-stage">STAGE</div>
+                <div class="bp-middle">
+                    <div class="bp-wc">WC</div>
+                    <div class="bp-tables">
+                        <div class="t-item free">1</div><div class="t-item occupied">2</div>
+                        <div class="t-item free">3</div><div class="t-item occupied">4</div>
+                        <div class="t-item free">5</div><div class="t-item free">6</div>
                     </div>
-                    <div class="bar-counter">LONG BAR AREA</div>
+                    <div class="bp-bar">LONG BAR</div>
                 </div>
-                <div class="entrance">ENTRANCE / SECURITY CONTROL</div>
+                <div class="bp-entrance">ENTRANCE</div>
             </div>
-            <p class="map-info">Зеленый — свободен. Жми для брони.</p>
         </div>
     </div>
 
-    <!-- Модалка бронирования -->
+    <!-- БРОНИРОВАНИЕ -->
     <div id="bookModal" class="modal">
-        <div class="modal-box">
-            <span class="close" onclick="closeBooking()">&times;</span>
-            <h2 class="pink-n">RESERVE</h2>
-            <form id="resForm">
-                <input type="text" placeholder="ВАШЕ ИМЯ" required>
+        <div class="modal-box glass-modal">
+            <span class="close-btn" onclick="closeBooking()">&times;</span>
+            <h2 class="modal-title pink">RESERVE</h2>
+            <form id="bookingForm">
+                <input type="text" placeholder="NAME" required>
                 <input type="tel" id="phone" placeholder="+7 (___)" required>
-                <button type="submit" class="booking-btn">CONFIRM</button>
+                <button type="submit" class="btn-glow-pink">CONFIRM</button>
             </form>
         </div>
     </div>
 
-    <!-- ИИ БОТ -->
-    <div class="bot-box" id="bot">
-        <div class="bot-head" onclick="toggleBot()">P1LS AI ASSISTANT</div>
-        <div class="bot-content" id="bot-ui">
-            <div id="bot-msgs"></div>
-            <div id="bot-opts"></div>
+    <!-- AI ASSISTANT -->
+    <div class="ai-assistant-vice" id="bot">
+        <div class="bot-header" onclick="toggleBot()">VICE ASSISTANT</div>
+        <div class="bot-window" id="bot-ui">
+            <div id="bot-messages"></div>
+            <div id="bot-options"></div>
         </div>
     </div>
 
